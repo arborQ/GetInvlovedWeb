@@ -11,7 +11,7 @@ export default class SearchComponent extends React.Component {
       <Card style={{ maxWidth : '800px', margin : '0 auto' }}>
         <CardHeader
         title="Wyszukiwanie połączeń"
-        subtitle="Dane przewozowe" avatar="/static/icon.png"></CardHeader>
+        subtitle="Dane przewozowe" avatar="/icon.png"></CardHeader>
 
         <CardText><SearchForm /></CardText>
         <CardActions>

@@ -58434,7 +58434,7 @@
 	        { style: { maxWidth: '800px', margin: '0 auto' } },
 	        React.createElement(_materialUi.CardHeader, {
 	          title: 'Wyszukiwanie połączeń',
-	          subtitle: 'Dane przewozowe', avatar: '/static/icon.png' }),
+	          subtitle: 'Dane przewozowe', avatar: '/icon.png' }),
 	        React.createElement(
 	          _materialUi.CardText,
 	          null,
