@@ -5,28 +5,35 @@
   "scripts": {
     "start": "node ./bin/www"
   },
+  "babel": {
+    "plugins": [
+      "syntax-decorators"
+    ]
+  },
   "dependencies": {
+    "babel-core": "^6.5.1",
+    "babel-loader": "^6.2.2",
+    "babel-plugin-syntax-decorators": "^6.5.0",
+    "babel-preset-es2015": "^6.5.0",
+    "babel-preset-react": "^6.5.0",
     "body-parser": "~1.13.2",
     "cookie-parser": "~1.3.5",
     "debug": "~2.2.0",
     "express": "~4.13.1",
     "history": "^2.0.0",
     "jade": "~1.11.0",
+    "lodash": "^4.3.0",
+    "material-ui": "^0.14.4",
     "morgan": "~1.6.1",
     "path": "^0.12.7",
-    "webpack": "^2.0.6-beta",
     "react": "^0.14.7",
+    "react-bootstrap": "^0.28.3",
     "react-dom": "^0.14.7",
     "react-router": "^2.0.0",
     "react-tap-event-plugin": "^0.2.2",
-    "material-ui": "^0.14.4",
-    "babel-core": "^6.5.1",
-    "babel-loader": "^6.2.2",
-    "babel-preset-es2015": "^6.5.0",
-    "babel-preset-react": "^6.5.0",
-    "serve-favicon": "~2.3.0"
+    "redux": "^3.3.1",
+    "serve-favicon": "~2.3.0",
+    "webpack": "^2.0.6-beta"
   },
-  "devDependencies" : {
-
-  }
+  "devDependencies": {}
 }

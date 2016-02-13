@@ -7,3 +7,22 @@ body {
 a {
   color: #00B7FF;
 }
+
+/* Large */
+.in-row {
+  display : flex;
+  flex-direction : row;
+  align-items : flex-end;
+}
+
+/* Medium screens */
+@media all and (max-width: 650px) {
+  .in-row {
+    flex-direction : column;
+  }
+}
+
+/* Small screens */
+@media all and (max-width: 500px) {
+
+}
