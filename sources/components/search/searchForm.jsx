@@ -6,9 +6,9 @@ export default class SearchFormComponent extends React.Component {
   render(){
     return (
       <div>
-        <AutoComplete floatingLabelText="Podroz z..." dataSource={[ "Wroclaw", "Kozienice", "Czernica", "Chrzastawa Wielka" ]} />
-        <AutoComplete floatingLabelText="Podroz do..." dataSource={[ "Berlin", "Londyn" ]} />
-        <DatePicker hintText="W dniu..." autoOk={true} />
+        <AutoComplete fullWidth={true} floatingLabelText="Podroz z..." dataSource={[ "Wroclaw", "Kozienice", "Czernica", "Chrzastawa Wielka" ]} />
+        <AutoComplete fullWidth={true} floatingLabelText="Podroz do..." dataSource={[ "Berlin", "Londyn" ]} />
+        <DatePicker fullWidth={true} floatingLabelText="W dniu..." autoOk={true} />
       </div>
     )
   }

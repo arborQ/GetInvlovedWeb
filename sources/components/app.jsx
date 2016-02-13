@@ -9,16 +9,17 @@ export default class Application extends React.Component{
   }
 
   render(){
+    var panelWidth = 180;
     return (
       <div>
-        <LeftNav open={this.state.menuOpen}>
+        <LeftNav open={this.state.menuOpen} docked={true} width={panelWidth}>
           <div>
             <Link to="/search">
               <MenuItem>Szukaj</MenuItem>
             </Link>
           </div>
         </LeftNav>
-        <div style={{ paddingLeft : this.state.menuOpen ? "254px" : "0" }}>
+        <div style={{ paddingLeft : this.state.menuOpen ? panelWidth + "px" : "0" }}>
           {this.props.children}
         </div>
       </div>
