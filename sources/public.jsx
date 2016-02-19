@@ -7,12 +7,13 @@ import { Router, Route, Link, browserHistory } from 'react-router';
 import Application from './components/app';
 
 import SearchPage from './components/search/searchPage'
-
+import DefineTravel from './components/travel/defineTravel'
 injectTapEventPlugin();
 dom.render(
     <Router history={browserHistory}>
     <Route path="/" component={Application} >
       <Route path="search" component={SearchPage}></Route>
+      <Route path="travel" component={DefineTravel}></Route>
     </Route>
   </Router>
   ,

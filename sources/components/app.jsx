@@ -17,6 +17,9 @@ export default class Application extends React.Component{
             <Link to="/search">
               <MenuItem>Szukaj</MenuItem>
             </Link>
+            <Link to="/travel">
+              <MenuItem>Trasa</MenuItem>
+            </Link>
           </div>
         </LeftNav>
         <div style={{ paddingLeft : this.state.menuOpen ? panelWidth + "px" : "0" }}>
