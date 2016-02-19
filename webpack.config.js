@@ -22,6 +22,6 @@ module.exports = {
         path: __dirname,
         filename: "./public/bundles/[name].bundle.js"
     },
-    devtool: 'source-map',
+    // devtool: 'source-map',
     noParse : [ 'react', 'react-dom', 'material-ui']
 };

@@ -11,7 +11,7 @@ export default class defineTravel extends React.Component{
         title="Dodaj nowe połączenie"
         subtitle="Dane przewozowe" avatar="/new-pointer.png"></CardHeader>
 
-        <CardText><LocationResolver /></CardText>
+        <CardText><LocationResolver searchText="test from props" /></CardText>
         <CardActions>
           <RaisedButton label="Dodaj" primary={true} />
         </CardActions>
