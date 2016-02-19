@@ -13,6 +13,6 @@ export default class LocationResolver extends React.Component{
   }
   render(){
     var { searchText } = this.state;
-    return (<input type="text" value={searchText} />);
+    return (<input type="text" value={searchText} onChange={(e) => { this.setState({ searchText : e.target.value }); }} />);
   }
 }
