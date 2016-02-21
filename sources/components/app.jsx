@@ -2,6 +2,8 @@ import * as React from 'react';
 import { Link } from 'react-router';
 import { LeftNav, MenuItem, AppBar } from 'material-ui';
 
+import './logic/googleApi';
+
 export default class Application extends React.Component{
   constructor(){
     super();

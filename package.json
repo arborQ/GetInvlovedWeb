@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node ./bin/www",
     "watch": "webpack --watch --progress --color",
-    "dev" : "webpack"
+    "dev": "webpack"
   },
   "babel": {
     "plugins": [
@@ -28,6 +28,7 @@
     "material-ui": "^0.14.4",
     "morgan": "~1.6.1",
     "path": "^0.12.7",
+    "q": "^1.4.1",
     "react": "^0.14.7",
     "react-bootstrap": "^0.28.3",
     "react-dom": "^0.14.7",
