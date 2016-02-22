@@ -22,10 +22,12 @@ export default class defineTravel extends React.Component{
         subtitle="Dane przewozowe" avatar="/new-pointer.png"></CardHeader>
 
         <CardText>
-          <LocationResolver
-          label="Punkt startowy"
-          searchText={locationFrom.description}
-          onChange={(description) => { this.setState({}, this.state, { locationFrom : { description } }) }} />
+          <div style={{display : 'flex', flexDirection : 'row'}}>
+            <LocationResolver
+            label="Punkt startowy"
+            onChange={(description) => { this.setState({}, this.state, { locationFrom : { description } }) }} />
+            <LocationResolver label="Punkt końcowy" />
+          </div>
         </CardText>
         <CardActions>
           <RaisedButton label="Dodaj" primary={true} />

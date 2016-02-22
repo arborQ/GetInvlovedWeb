@@ -1,39 +1,41 @@
 import * as React from 'react';
-import { TextField, Paper  } from 'material-ui';
+import { TextField, Paper, AutoComplete } from 'material-ui';
 import { assign } from 'lodash';
 
+import { loadCities } from '../logic/googleApi';
 import LocationList from './locations';
 
 export default class LocationResolver extends React.Component{
   constructor(){
     super();
-    this.state = { searchText : 'Kozienice', showPredictions : false };
+    this.state = { locations : [], open : false, searchText : '' };
   }
   componentWillReceiveProps(nextProps){
-    if(nextProps.searchText){
-      this.setState(assign({}, this.state, { searchText : nextProps.searchText }));
+
+  }
+
+  loadLocations(searchText){
+    this.setState(assign({}, this.state, { searchText }));
+    if(searchText.length > 1){
+      loadCities(searchText).then((locations) => {
+        this.setState(assign({}, this.state, { locations, open : true }));
+      });
     }
   }
 
-  togglePredictions(show){
-    this.setState(assign({}, this.state, { showPredictions : show }));
-  }
-
   render(){
-    var { searchText, showPredictions } = this.state;
-    var { onChange } = this.props;
+    var { locations, open, searchText } = this.state;
+    var { label } = this.props;
     return (
       <div>
-        <TextField
-        defaultValue={searchText}
-        floatingLabelText={this.props.label || "Lokalizacja"}
-        onChange={(e) => { this.setState({ searchText : e.target.value }); }}
-        onFocus={() => { this.togglePredictions(true) }}
-        onBlur={() => { this.togglePredictions(false) }}
-         />
-        <Paper style={{ position : 'absolute', zIndex : 99, display : (showPredictions ? 'block' : 'none') }}>
-          <LocationList search={searchText} onSelect={(item) => { onChange(item.description); } } />
-        </Paper>
+        <AutoComplete
+        filter={AutoComplete.noFilter}
+        dataSource={locations.map((c) => c.description)}
+        open={open && locations.length > 0}
+        searchText={searchText}
+        triggerUpdateOnFocus={true}
+        floatingLabelText={label || "Lokalizacja"}
+        onUpdateInput={(value) => { this.loadLocations(value); }} />
       </div>
     );
   }

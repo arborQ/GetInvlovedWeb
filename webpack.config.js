@@ -1,9 +1,11 @@
+/* global webpack */
+/* global __dirname */
 module.exports = {
     module: {
         loaders: [
           {
             test: /.jsx?$/,
-            loader: 'babel-loader',
+            loaders: ['babel-loader'],
             exclude: /(node_modules|bower_components)/,
             query: {
               presets: ['es2015', 'react']
@@ -15,13 +17,17 @@ module.exports = {
       extensions: ['', '.js', '.jsx', '.ts', '.tsx']
     },
     entry: {
+
         // angular: "./sources/application.angular/app.ts",
-        public: "./sources/public"
+      'public': "./sources/public"
     },
     output: {
         path: __dirname,
         filename: "./public/bundles/[name].bundle.js"
     },
+    // plugins: [
+    //   new webpack.HotModuleReplacementPlugin()
+    // ],
     // devtool: 'source-map',
     noParse : [ 'react', 'react-dom', 'material-ui']
 };
