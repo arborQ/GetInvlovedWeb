@@ -2,9 +2,9 @@ doctype html
 html
   head
     title= title
+    link(rel='stylesheet', href='/bower_components/bootstrap/dist/css/bootstrap.min.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel="shortcut icon" href="/favicon.ico")
   body
     block content
     script(type="text/javascript", src="/bundles/public.bundle.js")
-    script(type="text/javascript", src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDoKde6TPe_rQ22k9iWp9m6QkekrNulMUY&signed_in=true&libraries=places&callback=initGoogleApi")

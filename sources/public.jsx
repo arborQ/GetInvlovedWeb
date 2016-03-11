@@ -1,19 +1,14 @@
 
 import * as React from 'react';
 import * as dom from 'react-dom';
-import injectTapEventPlugin from 'react-tap-event-plugin';
 import { Router, Route, Link, browserHistory } from 'react-router';
 
-import Application from './components/app';
-
-import SearchPage from './components/search/searchPage'
-import DefineTravel from './components/travel/defineTravel'
-injectTapEventPlugin();
+import Application from './Components/Application/application.component';
+import SearchPage from './Components/Search/application.search';
 dom.render(
     <Router history={browserHistory}>
     <Route path="/" component={Application} >
-      <Route path="search" component={SearchPage}></Route>
-      <Route path="travel" component={DefineTravel}></Route>
+      <Route path="/search" component={SearchPage}></Route>
     </Route>
   </Router>
   ,

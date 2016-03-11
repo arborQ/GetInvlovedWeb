@@ -2,27 +2,48 @@ body {
   padding: 0;
   margin : 0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding-top: 60px;
+}
+nav{
+  min-height: 50px;
+  background-color: #3097d1;
+  position: fixed;
+  top : 0;
+  width: 100%;
+}
+nav li{
+  float : left;
+  display: block;
+}
+nav li a{
+  line-height: 22px;
+  padding: 14px 16px;
+  float: left;
+  color : #FFF;
 }
 
-a {
-  color: #00B7FF;
+.by {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
-/* Large */
-.in-row {
-  display : flex;
-  flex-direction : row;
-  align-items : flex-end;
+.f{
+  width : 100%;
 }
-
-/* Medium screens */
-@media all and (max-width: 650px) {
-  .in-row {
-    flex-direction : column;
+@media (min-width: 768px) {
+  .by {
+    width: 750px;
   }
 }
-
-/* Small screens */
-@media all and (max-width: 500px) {
-
+@media (min-width: 992px) {
+  .by {
+    width: 990px;
+  }
+}
+@media (min-width: 1260px) {
+  .by {
+    width: 1230px;
+  }
 }
