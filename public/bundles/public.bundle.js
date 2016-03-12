@@ -24911,7 +24911,7 @@
 	    value: function render() {
 	      return React.createElement(
 	        'div',
-	        null,
+	        { className: 'card-block' },
 	        React.createElement(
 	          'div',
 	          { className: 'input-group' },

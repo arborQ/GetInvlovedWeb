@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 export default class applicationSearch extends React.Component{
   render(){
     return (
-      <div>
+      <div className="card-block">
         <div className="input-group">
           <span className="input-group-btn">
             <button className="btn btn-secondary" type="button">From</button>
