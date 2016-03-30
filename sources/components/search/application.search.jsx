@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { Link } from 'react-router';
-export default class applicationSearch extends React.Component{
+import { routeItem } from '../routing/routes';
+
+@routeItem('Szukaj')
+class applicationSearch extends React.Component{
   render(){
     return (
       <div className="card-block">
@@ -15,4 +18,6 @@ export default class applicationSearch extends React.Component{
         </div>
       </div>);
   }
-}
+};
+
+export default applicationSearch;

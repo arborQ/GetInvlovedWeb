@@ -74,7 +74,7 @@
 	  React.createElement(
 	    _reactRouter.Route,
 	    { path: '/', component: _application2.default },
-	    React.createElement(_reactRouter.Route, { path: '/search', component: _application4.default })
+	    React.createElement(_reactRouter.Route, { path: _application4.default.PageCode, component: _application4.default })
 	  )
 	), document.getElementById('app'));
 
@@ -24760,6 +24760,12 @@
 
 	var _reactRouter = __webpack_require__(159);
 
+	var _application = __webpack_require__(217);
+
+	var _application2 = _interopRequireDefault(_application);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -24805,7 +24811,7 @@
 	                null,
 	                React.createElement(
 	                  _reactRouter.Link,
-	                  { to: '/search' },
+	                  { to: _application2.default.PageCode },
 	                  'Szukaj'
 	                )
 	              ),
@@ -24883,11 +24889,15 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+	var _dec, _class;
+
 	var _react = __webpack_require__(1);
 
 	var React = _interopRequireWildcard(_react);
 
 	var _reactRouter = __webpack_require__(159);
+
+	var _routes = __webpack_require__(218);
 
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -24897,7 +24907,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var applicationSearch = function (_React$Component) {
+	var applicationSearch = (_dec = (0, _routes.routeItem)('Szukaj'), _dec(_class = function (_React$Component) {
 	  _inherits(applicationSearch, _React$Component);
 
 	  function applicationSearch() {
@@ -24940,9 +24950,26 @@
 	  }]);
 
 	  return applicationSearch;
-	}(React.Component);
+	}(React.Component)) || _class);
+	;
 
 	exports.default = applicationSearch;
+
+/***/ },
+/* 218 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.routeItem = routeItem;
+	function routeItem(path) {
+	  return function (target) {
+	    target.PageCode = "/" + path;
+	  };
+	};
 
 /***/ }
 /******/ ]);

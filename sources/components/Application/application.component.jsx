@@ -1,6 +1,10 @@
 import * as React from 'react';
 import { Link } from 'react-router';
-export default class applicationComponent extends React.Component{
+
+import SearchPage from '../Search/application.search';
+
+
+class applicationComponent extends React.Component{
   render(){
 
     var imageStyle = {
@@ -15,7 +19,7 @@ export default class applicationComponent extends React.Component{
         <nav>
           <div className="by">
             <ul className="nav navbar-nav">
-              <li><Link to="/search">Szukaj</Link></li>
+              <li><Link to={SearchPage.PageCode}>Szukaj</Link></li>
               <li><Link to="/Historia">Historia</Link></li>
               <li><Link to="/Ustawienia">Ustawienia</Link></li>
             </ul>
@@ -38,3 +42,5 @@ export default class applicationComponent extends React.Component{
       </div>);
   }
 }
+
+export default applicationComponent;

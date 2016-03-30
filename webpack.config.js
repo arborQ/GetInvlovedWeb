@@ -7,6 +7,7 @@ var loaders = [
     "exclude": /node_modules/,
     "loader": "babel",
     "query": {
+      "plugins": ['transform-decorators-legacy' ],
       "presets": [
         "stage-0",
         "es2015",
