@@ -24811,6 +24811,15 @@
 	                null,
 	                React.createElement(
 	                  _reactRouter.Link,
+	                  { to: '/' },
+	                  'Home'
+	                )
+	              ),
+	              React.createElement(
+	                'li',
+	                null,
+	                React.createElement(
+	                  _reactRouter.Link,
 	                  { to: _application2.default.PageCode },
 	                  'Szukaj'
 	                )

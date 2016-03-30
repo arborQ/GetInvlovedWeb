@@ -19,6 +19,7 @@ class applicationComponent extends React.Component{
         <nav>
           <div className="by">
             <ul className="nav navbar-nav">
+              <li><Link to='/'>Home</Link></li>
               <li><Link to={SearchPage.PageCode}>Szukaj</Link></li>
               <li><Link to="/Historia">Historia</Link></li>
               <li><Link to="/Ustawienia">Ustawienia</Link></li>
