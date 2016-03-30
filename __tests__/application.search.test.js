@@ -8,14 +8,19 @@ describe('application.search', () => {
     expect(searchComponent).toBeDefined();
   });
 
-  it('can create instance, and has render function', () => {
-    var instance = new searchComponent();
-    expect(instance).not.toBe(null);
-    expect(instance.render).toBeDefined();
+  it('PageCode is set', () => {
+    expect(searchComponent.PageCode).toBe('/Szukaj');
   });
 
-  it('can render', () => {
+  describe('instance', () => {
     var instance = new searchComponent();
-    instance.render();
+    it('can create instance, and has render function', () => {
+      expect(instance).not.toBe(null);
+      expect(instance.render).toBeDefined();
+    });
+
+    it('can render', () => {
+      instance.render();
+    });
   });
 });
