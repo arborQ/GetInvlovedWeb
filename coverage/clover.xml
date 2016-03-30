@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1459346548197" clover="3.2.0">
+	<project timestamp="1459346548197"  name="All Files" >
+		<metrics statements="10"  coveredstatements="9"  conditionals="37"  coveredconditionals="22"  methods="12"  coveredmethods="11"  elements="59"  coveredelements="42"  complexity="0"  packages="2"  files="2"  classes="2"  loc="24"  ncloc="24" />
+		<package name="routing" >
+			<metrics statements="3"  coveredstatements="3"  conditionals="0"  coveredconditionals="0"  methods="2"  coveredmethods="2" />
+			<file name="routes.js"  path="C:\Users\lukasz.wojcik\Documents\InvlovedWeb\sources\components\routing\routes.js" >
+				<metrics statements="3"  coveredstatements="3"  conditionals="0"  coveredconditionals="0"  methods="2"  coveredmethods="2" />
+				<line num="1"  count="1"  type="stmt" />
+				<line num="2"  count="1"  type="stmt" />
+				<line num="3"  count="1"  type="stmt" />
+			</file>
+		</package>
+		<package name="search" >
+			<metrics statements="7"  coveredstatements="6"  conditionals="37"  coveredconditionals="22"  methods="10"  coveredmethods="9" />
+			<file name="application.search.jsx"  path="C:\Users\lukasz.wojcik\Documents\InvlovedWeb\sources\components\search\application.search.jsx" >
+				<metrics statements="7"  coveredstatements="6"  conditionals="37"  coveredconditionals="22"  methods="10"  coveredmethods="9" />
+				<line num="1"  count="1"  type="cond"  truecount="5"  falsecount="3" />
+				<line num="2"  count="1"  type="stmt" />
+				<line num="3"  count="19"  type="cond"  truecount="15"  falsecount="12" />
+				<line num="6"  count="2"  type="cond"  truecount="2"  falsecount="0" />
+				<line num="8"  count="0"  type="stmt" />
+				<line num="16"  count="1"  type="stmt" />
+				<line num="21"  count="1"  type="stmt" />
+			</file>
+		</package>
+	</project>
+</coverage>
