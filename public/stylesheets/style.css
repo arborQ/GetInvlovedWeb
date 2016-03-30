@@ -55,3 +55,7 @@ nav li.active a{
     width: 1230px;
   }
 }
+
+.pull-right{
+  float: right;
+}
