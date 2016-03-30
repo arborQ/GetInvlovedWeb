@@ -234,6 +234,6 @@ _Pvt_Extensions
 # FAKE - F# Make
 .fake/
 
-
+coverage
 node_modules
 public/bower_components

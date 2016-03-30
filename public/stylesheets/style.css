@@ -22,6 +22,14 @@ nav li a{
   color : #FFF;
 }
 
+nav li.active{
+  background-color: #FFF;
+}
+nav li.active a{
+  color : #3097d1;
+  cursor: default;
+}
+
 .by {
   margin-right: auto;
   margin-left: auto;
