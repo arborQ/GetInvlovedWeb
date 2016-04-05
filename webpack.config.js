@@ -26,11 +26,11 @@ module.exports = {
       extensions: ['', '.js', '.jsx', '.ts', '.tsx']
     },
     entry: {
-      'public': "./sources/public"
+      'public': "./sources/frontEnd/public"
     },
     output: {
         path: __dirname,
-        filename: "./public/bundles/[name].bundle.js"
+        filename: "./[name]/bundle.js"
     },
     noParse : [ 'react', 'react-dom', 'material-ui']
 };
