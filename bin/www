@@ -34,7 +34,7 @@
 /******/ 	__webpack_require__.c = installedModules;
 
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
+/******/ 	__webpack_require__.p = "C:\\Users\\lukasz.wojcik\\Documents\\InvlovedWeb";
 
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(__webpack_require__.s = 4);
@@ -64,7 +64,7 @@
 
 	var _path2 = _interopRequireDefault(_path);
 
-	var _serveFavicon = __webpack_require__(10);
+	var _serveFavicon = __webpack_require__(11);
 
 	var _serveFavicon2 = _interopRequireDefault(_serveFavicon);
 
@@ -89,7 +89,9 @@
 	var app = (0, _express2.default)();
 
 	// view engine setup
-	app.set('views', _path2.default.join(__dirname, 'views'));
+	var pathAbsolute = '../..';
+
+	app.set('views', _path2.default.join(__dirname, pathAbsolute, 'views'));
 	app.set('view engine', 'jade');
 
 	// uncomment after placing your favicon in /public
@@ -98,9 +100,7 @@
 	app.use(_bodyParser2.default.json());
 	app.use(_bodyParser2.default.urlencoded({ extended: false }));
 	app.use((0, _cookieParser2.default)());
-	app.use(_express2.default.static(_path2.default.join(__dirname, 'public')));
-	// app.use('/static', express.static('public'));
-
+	app.use('/', _express2.default.static(_path2.default.join(__dirname, pathAbsolute, 'public')));
 	app.use('/', _index2.default);
 
 	// catch 404 and forward to error handler
@@ -161,7 +161,7 @@
 
 	var _nconf2 = _interopRequireDefault(_nconf);
 
-	var _react = __webpack_require__(11);
+	var _react = __webpack_require__(10);
 
 	var React = _interopRequireWildcard(_react);
 
@@ -283,13 +283,13 @@
 /* 10 */
 /***/ function(module, exports) {
 
-	module.e = require("serve-favicon");
+	module.e = require("react");
 
 /***/ },
 /* 11 */
 /***/ function(module, exports) {
 
-	module.e = require("react");
+	module.e = require("serve-favicon");
 
 /***/ }
 /******/ ]);

@@ -7,7 +7,7 @@ fs.readdirSync('node_modules')
         return ['.bin'].indexOf(x) === -1;
     })
     .forEach(function(mod) {
-        nodeModules[mod] = 'commonjs ' + mod;    
+        nodeModules[mod] = 'commonjs ' + mod;
     });
 
 module.exports =
@@ -18,7 +18,8 @@ module.exports =
     entry: './sources/backEnd/www.js',
     output: {
         path: path.join(__dirname, 'bin'),
-        filename: 'www'
+        filename: 'www',
+        publicPath : __dirname
     },
     node: {
         __filename: true,
@@ -37,5 +38,6 @@ module.exports =
         ]
     },
     plugins: [
-  ]
+    ],
+    devtool: 'sourcemap',
 };
