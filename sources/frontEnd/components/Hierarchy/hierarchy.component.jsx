@@ -11,14 +11,11 @@ export default class HierarchyComponent extends React.Component{
   }
 
   componentWillMount(){
-    this.subscriber = store.subscribe(() => {
+    this.componentWillUnmount = store.subscribe(() => {
       this.setState(store.getState());
-      console.log('change state');
     });
   }
-  componentWillUnmount(){
-    this.subscriber();
-  }
+
   render(){
     var items = [];
     return (<TreeView items={this.state.hierarchy} />);

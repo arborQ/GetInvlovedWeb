@@ -1,7 +1,8 @@
 var defaultHierarchyState = {
   hierarchy : [
     { treeCode : '0-', name : 'root', isOpen : true },
-    { treeCode : '0-0-', name : 'first childXX', isOpen : true }
+    { treeCode : '0-0-', name : 'first child', isOpen : true },
+    { treeCode : '0-0-0-', name : 'last child', isOpen : false }
   ]
 }
 

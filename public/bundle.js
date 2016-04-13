@@ -8057,15 +8057,9 @@
 	    value: function componentWillMount() {
 	      var _this2 = this;
 
-	      this.subscriber = _store2.default.subscribe(function () {
+	      this.componentWillUnmount = _store2.default.subscribe(function () {
 	        _this2.setState(_store2.default.getState());
-	        console.log('change state');
 	      });
-	    }
-	  }, {
-	    key: 'componentWillUnmount',
-	    value: function componentWillUnmount() {
-	      this.subscriber();
 	    }
 	  }, {
 	    key: 'render',
@@ -13772,7 +13766,7 @@
 	});
 	exports.default = hierarchyReducer;
 	var defaultHierarchyState = {
-	  hierarchy: [{ treeCode: '0-', name: 'root', isOpen: true }, { treeCode: '0-0-', name: 'first childXX', isOpen: true }]
+	  hierarchy: [{ treeCode: '0-', name: 'root', isOpen: true }, { treeCode: '0-0-', name: 'first child', isOpen: true }, { treeCode: '0-0-0-', name: 'last child', isOpen: false }]
 	};
 
 	function hierarchyReducer() {
@@ -13902,6 +13896,8 @@
 
 	var _store2 = _interopRequireDefault(_store);
 
+	var _actions = __webpack_require__(244);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
@@ -13932,11 +13928,13 @@
 	      var item = this.props.item;
 	      var level = this.level();
 	      var style = { paddingLeft: level * 16 + 'px' };
+
 	      return React.createElement(
 	        'li',
-	        { onClick: function onClick() {
-	            _store2.default.dispatch({ type: 'TOGGLE_COLLAPSE', treeCode: item.treeCode });
-	          }, style: style, className: 'list-group-item' },
+	        { style: style, className: 'list-group-item', onClick: function onClick() {
+	            _store2.default.dispatch((0, _actions.toggleCollapse)(item.treeCode));
+	          } },
+	        React.createElement('i', { className: 'fa fa-angle-' + (item.isOpen ? 'up' : 'down') }),
 	        item.name + ' -> ' + item.isOpen
 	      );
 	    }
@@ -26460,6 +26458,20 @@
 		});
 	};
 
+
+/***/ },
+/* 244 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.toggleCollapse = toggleCollapse;
+	function toggleCollapse(treeCode) {
+	  return { type: 'TOGGLE_COLLAPSE', treeCode: treeCode };
+	};
 
 /***/ }
 /******/ ]);
