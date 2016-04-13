@@ -13766,17 +13766,15 @@
 	});
 	exports.default = hierarchyReducer;
 	var defaultHierarchyState = {
-	  hierarchy: [{ treeCode: '0-', name: 'root', isOpen: true }, { treeCode: '0-0-', name: 'first child', isOpen: true }, { treeCode: '0-0-0-', name: 'last child', isOpen: false }]
+	  hierarchy: [{ treeCode: '0-', name: 'root', isOpen: true }, { treeCode: '0-0-', name: 'first child', isOpen: true }, { treeCode: '0-0-0-', name: 'last child', isOpen: false }, { treeCode: '0-1-', name: 'ok', isOpen: true }]
 	};
 
 	function hierarchyReducer() {
 	  var state = arguments.length <= 0 || arguments[0] === undefined ? defaultHierarchyState : arguments[0];
 	  var action = arguments[1];
 
-	  console.log(state);
 	  switch (action.type) {
 	    case 'TOGGLE_COLLAPSE':
-	      console.log('TOGGLE_COLLAPSE');
 	      return Object.assign({}, state, { hierarchy: state.hierarchy.map(function (item) {
 	          return item.treeCode === action.treeCode ? Object.assign({}, item, { isOpen: !item.isOpen }) : item;
 	        }) });
@@ -13927,7 +13925,7 @@
 	    value: function render() {
 	      var item = this.props.item;
 	      var level = this.level();
-	      var style = { paddingLeft: level * 16 + 'px' };
+	      var style = { paddingLeft: level * 16 + 'px', cursor: 'pointer' };
 
 	      return React.createElement(
 	        'li',

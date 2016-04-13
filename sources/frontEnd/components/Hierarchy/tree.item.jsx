@@ -9,7 +9,7 @@ export default class TreeItem extends React.Component{
   render(){
     var item = this.props.item;
     var level = this.level();
-    var style = { paddingLeft : level  * 16 + 'px'  }
+    var style = { paddingLeft : level  * 16 + 'px', cursor : 'pointer'  }
 
     return (
       <li style={style} className="list-group-item" onClick={() => {store.dispatch(toggleCollapse(item.treeCode))}}>
