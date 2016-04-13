@@ -13168,7 +13168,8 @@
 	  _createClass(HierarchyComponent, [{
 	    key: 'render',
 	    value: function render() {
-	      return React.createElement(_tree2.default, null);
+	      var items = [];
+	      return React.createElement(_tree2.default, { items: [{ treeCode: '0-', name: 'root' }, { treeCode: '0-0-', name: 'first child' }] });
 	    }
 	  }]);
 
@@ -25539,14 +25540,26 @@
 	  _createClass(TreeContainer, [{
 	    key: "render",
 	    value: function render() {
-	      return React.createElement(
-	        "ul",
-	        { className: "list-group" },
-	        React.createElement(
+	      var hierarchyItems = this.props.items;
+
+	      var items = hierarchyItems.map(function (item) {
+	        return React.createElement(
+	          "li",
+	          { key: item.treeCode, className: "list-group-item" },
+	          item.name
+	        );
+	      });
+	      if (items.length === 0) {
+	        items = [React.createElement(
 	          "li",
 	          { className: "list-group-item disabled" },
 	          "No items"
-	        )
+	        )];
+	      }
+	      return React.createElement(
+	        "ul",
+	        { className: "list-group" },
+	        items
 	      );
 	    }
 	  }]);

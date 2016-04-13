@@ -5,6 +5,7 @@ import TreeView from './tree.container';
 @routeItem('Hierarchy')
 export default class HierarchyComponent extends React.Component{
   render(){
-    return (<TreeView />);
+    var items = [];
+    return (<TreeView items={[ { treeCode : '0-', name : 'root' }, { treeCode : '0-0-', name : 'first child' } ]} />);
   }
 }
