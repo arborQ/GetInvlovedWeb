@@ -25507,7 +25507,75 @@
 /* 229 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = undefined;
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(4);
+
+	var React = _interopRequireWildcard(_react);
+
+	var _tree = __webpack_require__(230);
+
+	var _tree2 = _interopRequireDefault(_tree);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var TreeContainer = function (_React$Component) {
+	  _inherits(TreeContainer, _React$Component);
+
+	  function TreeContainer() {
+	    _classCallCheck(this, TreeContainer);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(TreeContainer).apply(this, arguments));
+	  }
+
+	  _createClass(TreeContainer, [{
+	    key: 'render',
+	    value: function render() {
+	      var hierarchyItems = this.props.items;
+
+	      var items = hierarchyItems.map(function (item) {
+	        return React.createElement(_tree2.default, { key: item.treeCode, item: item });
+	      });
+	      if (items.length === 0) {
+	        items = [React.createElement(
+	          'li',
+	          { className: 'list-group-item disabled' },
+	          'No items'
+	        )];
+	      }
+	      return React.createElement(
+	        'ul',
+	        { className: 'list-group' },
+	        items
+	      );
+	    }
+	  }]);
+
+	  return TreeContainer;
+	}(React.Component);
+
+	exports.default = TreeContainer;
+
+/***/ },
+/* 230 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -25528,46 +25596,38 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var TreeContainer = function (_React$Component) {
-	  _inherits(TreeContainer, _React$Component);
+	var TreeItem = function (_React$Component) {
+	  _inherits(TreeItem, _React$Component);
 
-	  function TreeContainer() {
-	    _classCallCheck(this, TreeContainer);
+	  function TreeItem() {
+	    _classCallCheck(this, TreeItem);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(TreeContainer).apply(this, arguments));
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(TreeItem).apply(this, arguments));
 	  }
 
-	  _createClass(TreeContainer, [{
-	    key: "render",
+	  _createClass(TreeItem, [{
+	    key: 'level',
+	    value: function level() {
+	      return (this.props.item.treeCode.match(/-/g) || []).length;
+	    }
+	  }, {
+	    key: 'render',
 	    value: function render() {
-	      var hierarchyItems = this.props.items;
-
-	      var items = hierarchyItems.map(function (item) {
-	        return React.createElement(
-	          "li",
-	          { key: item.treeCode, className: "list-group-item" },
-	          item.name
-	        );
-	      });
-	      if (items.length === 0) {
-	        items = [React.createElement(
-	          "li",
-	          { className: "list-group-item disabled" },
-	          "No items"
-	        )];
-	      }
+	      var item = this.props.item;
+	      var level = this.level();
+	      var style = { paddingLeft: level * 16 + 'px' };
 	      return React.createElement(
-	        "ul",
-	        { className: "list-group" },
-	        items
+	        'li',
+	        { style: style, className: 'list-group-item' },
+	        item.name
 	      );
 	    }
 	  }]);
 
-	  return TreeContainer;
+	  return TreeItem;
 	}(React.Component);
 
-	exports.default = TreeContainer;
+	exports.default = TreeItem;
 
 /***/ }
 /******/ ]);
