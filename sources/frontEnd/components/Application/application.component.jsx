@@ -23,13 +23,7 @@ class applicationComponent extends React.Component{
             </div>
           </nav>
           <div className="row by">
-            <div className="col col-md-3">
-              <div className="card">
-                <div className="card-img-top f" style={imageStyle}></div>
-                <div className="card-block">some random name</div>
-              </div>
-            </div>
-            <div className="col col-md-9">
+            <div className="col col-md-8 col-md-offset-2">
               <div className="card">
                 <div className="card-block">{this.props.children}</div>
               </div>

@@ -13,8 +13,8 @@ export default class TreeItem extends React.Component{
 
     return (
       <li style={style} className="list-group-item" onClick={() => {store.dispatch(toggleCollapse(item.treeCode))}}>
-        <i className={`fa fa-angle-${item.isOpen ? 'up' : 'down'}`}></i>
-        {`${item.name} -> ${item.isOpen}`}
+        <i className={`fa fa-angle-${item.$isOpen ? 'up' : 'down'}`}></i>
+        <span>{item.name}</span>
       </li>);
   }
 }
