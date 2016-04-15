@@ -19,11 +19,11 @@ export function toggleCollapse(treeCode){
 };
 
 export function startFetching(){
-  return { type : actionKeys.fetching, state : fetchingState.InProgress };
+  return { type : actionKeys.fetching, begin : true };
 }
 
 export function endFetching(){
-  return { type : actionKeys.fetching, state : fetchingState.Compleated };
+  return { type : actionKeys.fetching, begin : false };
 }
 
 export function reciveData(data){

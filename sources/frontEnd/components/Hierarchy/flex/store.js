@@ -1,13 +1,24 @@
-import { createStore } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import hierarchyReducer from './reducer';
 
 import defaultReducer from './reducers/defaultState.reducer';
 import toggleReducer from './reducers/toggleCollapse.reducer';
-import endFetching from './reducers/endFetching.reducer';
-import startFetching from './reducers/startFetching.reducer';
+import fetching from './reducers/fetching.reducer';
 import reciveData from './reducers/reciveData.reducer';
 
-var reducer = new hierarchyReducer([ defaultReducer, toggleReducer, startFetching, endFetching, reciveData ]);
-let store = createStore(reducer.reduce)
+function logger({ getState }) {
+  return (next) => (action) => {
+    console.log('will dispatch', action)
+    let returnValue = next(action)
+    console.log('state after dispatch', getState())
+    return returnValue
+  }
+}
+
+var reducer = new hierarchyReducer([ defaultReducer, toggleReducer, reciveData ]);
+let store = createStore(combineReducers({
+  fetching,
+  hierarchy : reducer.reduce
+}), applyMiddleware(logger));
 
 export default store;

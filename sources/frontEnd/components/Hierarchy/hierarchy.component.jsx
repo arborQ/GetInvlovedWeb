@@ -21,11 +21,11 @@ export default class HierarchyComponent extends React.Component{
 
   render(){
     var items = [];
-    if(this.state.isFetching > 0){
+    if(this.state.fetching.counter > 0){
       return (<div>loading ...</div>);
     }else{
-      return (<TreeView items={this.state.hierarchy} />);
-      
+      return (<TreeView items={this.state.hierarchy.items} />);
+
     }
   }
 }
