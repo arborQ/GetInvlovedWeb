@@ -7,6 +7,6 @@ export function loadHierarchyData(data){
   .then((response) => {
     setTimeout(() => {
       store.dispatch(endFetching());
-    }, 3000);
+    }, 1000);
   });
 };

@@ -13892,7 +13892,7 @@
 	  (0, _isomorphicFetch2.default)('/api/loadHierarchy', data).then(function (response) {
 	    setTimeout(function () {
 	      _store2.default.dispatch((0, _actions.endFetching)());
-	    }, 3000);
+	    }, 1000);
 	  });
 	};
 
@@ -13966,7 +13966,7 @@
 	  },
 	  reduce: function reduce(state, action) {
 	    return {
-	      items: [{ treeCode: '0-', name: 'root', $isOpen: true }, { treeCode: '0-0-', name: 'first child', $isOpen: true }, { treeCode: '0-0-0-', name: 'last child', $isOpen: false }, { treeCode: '0-1-', name: 'ok', $isOpen: true }]
+	      items: [{ treeCode: '0-', name: 'root', $isOpen: true, $isHidden: true }, { treeCode: '0-0-', name: 'first child', $isOpen: true, $isHidden: true }, { treeCode: '0-0-0-', name: 'last child', $isOpen: false, $isHidden: true }, { treeCode: '0-1-', name: 'ok', $isOpen: true, $isHidden: true }]
 	    };
 	  }
 	};
@@ -14029,6 +14029,16 @@
 
 	var _actions = __webpack_require__(28);
 
+	var calculateIsHidden = function calculateIsHidden(treeCode, itemTreeCode, isOpen) {
+	  if (treeCode === itemTreeCode) {
+	    return false;
+	  }
+	  if (treeCode.indexOf(itemTreeCode)) {
+	    return !isOpen;
+	  }
+	  return false;
+	};
+
 	exports.default = {
 	  canHandleAction: function canHandleAction(state, action) {
 	    return action.type === _actions.ActionKeys.toggleCollapse;
@@ -14036,7 +14046,7 @@
 	  reduce: function reduce(state, action) {
 	    return Object.assign({}, state, {
 	      items: state.items.map(function (item) {
-	        return item.treeCode === action.treeCode ? Object.assign({}, item, { $isOpen: !item.$isOpen }) : item;
+	        return item.treeCode === action.treeCode ? Object.assign({}, item, { $isOpen: !item.$isOpen, $isHidden: calculateIsHidden(item.treeCode, action.treeCode, !item.$isOpen) }) : item;
 	      })
 	    });
 	  }
@@ -14087,13 +14097,15 @@
 	    value: function render() {
 	      var hierarchyItems = this.props.items;
 
-	      var items = hierarchyItems.map(function (item) {
+	      var items = hierarchyItems.filter(function (item) {
+	        return item.$isHidden;
+	      }).map(function (item) {
 	        return React.createElement(_tree2.default, { key: item.treeCode, item: item });
 	      });
 	      if (items.length === 0) {
 	        items = [React.createElement(
 	          'li',
-	          { className: 'list-group-item disabled' },
+	          { key: 'noItems', className: 'list-group-item disabled' },
 	          'No items'
 	        )];
 	      }

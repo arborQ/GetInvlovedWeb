@@ -1,16 +1,19 @@
 @minWidth : 800px;
+@font-size : 12px;
 html{
     height: 100%;
 }
 
 body {
-  font-size: 12px;
+  font-size: @font-size;
   font-family: 'Roboto Mono';
   >#app{
       display: flex;
       flex-direction: column;
       height: 100%;
-
+      .form-control, .input-group-btn, .btn{
+        font-size: @font-size;
+      }
       header{
           flex: 0 0 auto;
           background-color: #3097d1;
@@ -24,6 +27,7 @@ body {
       }
 
       .main-content{
+          padding-top: 10px;
           margin : 0 auto;
           max-width: @minWidth;
           flex: 1 0 auto;
