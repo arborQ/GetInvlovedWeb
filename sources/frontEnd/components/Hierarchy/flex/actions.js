@@ -20,16 +20,16 @@ export function toggleCollapse(treeCode){
 
 export function startFetching(){
   return { type : actionKeys.fetching, begin : true };
-}
+};
 
 export function endFetching(){
   return { type : actionKeys.fetching, begin : false };
-}
+};
 
 export function reciveData(data){
   return { type : actionKeys.dataRecived, data };
-}
+};
 
 export function loadHierarchy(data){
   return startFetching('/api/hierarchy', data);
-}
+};

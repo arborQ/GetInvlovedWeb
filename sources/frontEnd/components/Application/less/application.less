@@ -1,0 +1,36 @@
+@minWidth : 800px;
+html{
+    height: 100%;
+}
+
+body {
+  font-size: 12px;
+  font-family: 'Roboto Mono';
+  >#app{
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+
+      header{
+          flex: 0 0 auto;
+          background-color: #3097d1;
+          a{
+            color : #FFF;
+          }
+          >div{
+            margin : 0 auto;
+            max-width: @minWidth;
+          }
+      }
+
+      .main-content{
+          margin : 0 auto;
+          max-width: @minWidth;
+          flex: 1 0 auto;
+      }
+
+      footer{
+         flex: 0 0 auto;
+      }
+  }
+}
