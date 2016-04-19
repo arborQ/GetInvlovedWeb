@@ -237,3 +237,5 @@ _Pvt_Extensions
 coverage
 node_modules
 public/bower_components
+public/**/*.js
+public/**/*.css
