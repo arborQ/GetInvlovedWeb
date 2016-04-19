@@ -2,10 +2,15 @@ var gulp = require('gulp');
 var gulpLess = require('gulp-less');
 var concatCss = require('gulp-concat-css');
 var cleanCSS = require('gulp-clean-css');
+var autoprefixer = require('gulp-autoprefixer');
 
 gulp.task('less', function(){
   gulp.src('sources/frontEnd/**/*.less')
   .pipe(gulpLess())
+  .pipe(autoprefixer({
+            browsers: ['last 2 versions'],
+            cascade: false
+        }))
   .pipe(concatCss('bundle.css'))
   .pipe(cleanCSS())
   .pipe(gulp.dest('public/stylesheets'))

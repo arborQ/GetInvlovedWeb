@@ -15,6 +15,7 @@
     "es6-promise": "^3.1.2",
     "express": "~4.13.1",
     "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
     "gulp-clean-css": "^2.0.6",
     "gulp-concat": "^2.6.0",
     "gulp-concat-css": "^2.2.0",

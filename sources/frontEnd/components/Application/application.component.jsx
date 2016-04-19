@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 import TopNavigation from './application.navigation';
 import LanguageSelection from './application.language';
-
+import AccountSettings from './aplication.menu';
 class applicationComponent extends React.Component{
   render(){
 
@@ -17,7 +17,8 @@ class applicationComponent extends React.Component{
       <div>
         <header>
           <div>
-            <TopNavigation selected={this.props.location.pathname} />
+            <TopNavigation key="TopNavigation" selected={this.props.location.pathname} />
+            <AccountSettings key="AccountSettings" />
           </div>
         </header>
         <section className="main-content">{this.props.children}</section>

@@ -3,6 +3,7 @@ import { routeItem } from '../routing/routes';
 import TreeView from './tree.container';
 import store from './flex/store';
 import { loadHierarchyData } from './flex/dataService';
+import { LoadingIndicator } from '../shared';
 
 @routeItem('Hierarchy')
 export default class HierarchyComponent extends React.Component{
@@ -22,7 +23,7 @@ export default class HierarchyComponent extends React.Component{
   render(){
     var items = [];
     if(this.state.fetching.counter > 0){
-      return (<div>loading ...</div>);
+      return (<LoadingIndicator />);
     }else{
       return (<TreeView items={this.state.hierarchy.items} />);
 

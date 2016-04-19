@@ -1,18 +1,19 @@
-@minWidth : 800px;
-@font-size : 12px;
+
+@import '_consts';
 html{
     height: 100%;
 }
 
 body {
-  font-size: @font-size;
+  font-size: @fontSize;
   font-family: 'Roboto Mono';
   >#app{
       display: flex;
       flex-direction: column;
+      align-content: stretch;
       height: 100%;
       .form-control, .input-group-btn, .btn{
-        font-size: @font-size;
+        font-size: @fontSize;
       }
       header{
           flex: 0 0 auto;
@@ -23,6 +24,10 @@ body {
           >div{
             margin : 0 auto;
             max-width: @minWidth;
+            display: flex;
+            flex-direction: row;
+            align-items : center;
+            justify-content: space-between;
           }
       }
 
