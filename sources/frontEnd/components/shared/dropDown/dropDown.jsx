@@ -17,13 +17,13 @@ export default class dropDownContainer extends React.Component {
   }
 
   componentDidMount () {
-    document.addEventListener('click', this.handleDocumentClick, false)
-    document.addEventListener('touchend', this.handleDocumentClick, false)
+    document.addEventListener('click', this.handleDocumentClick, true)
+    document.addEventListener('touchend', this.handleDocumentClick, true)
   }
 
   componentWillUnmount () {
-    document.removeEventListener('click', this.handleDocumentClick, false)
-    document.removeEventListener('touchend', this.handleDocumentClick, false)
+    document.removeEventListener('click', this.handleDocumentClick, true)
+    document.removeEventListener('touchend', this.handleDocumentClick, true)
   }
 
   render(){
