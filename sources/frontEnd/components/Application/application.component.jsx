@@ -25,24 +25,6 @@ class applicationComponent extends React.Component{
         <footer>...</footer>
       </div>
     );
-    //
-    // return (
-    //   <div className="row">
-    //     <div className="col col-lg-12">
-    //       <nav>
-    //         <div className="by">
-    //           <TopNavigation selected={this.props.location.pathname} />
-    //         </div>
-    //       </nav>
-    //       <div className="row by">
-    //         <div className="col col-md-8 col-md-offset-2">
-    //           <div className="card">
-    //             <div className="card-block">{this.props.children}</div>
-    //           </div>
-    //         </div>
-    //       </div>
-    //     </div>
-    //   </div>);
   }
 }
 
