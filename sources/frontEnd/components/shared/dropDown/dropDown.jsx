@@ -12,10 +12,6 @@ export default class dropDownContainer extends React.Component {
     };
   }
 
-  componentWillReceiveProps(newProps){
-    this.setState(Object.assign({}, this.state, { isOpen : newProps.isOpen }));
-  }
-
   componentDidMount () {
     document.addEventListener('click', this.handleDocumentClick, true)
     document.addEventListener('touchend', this.handleDocumentClick, true)
@@ -26,15 +22,29 @@ export default class dropDownContainer extends React.Component {
     document.removeEventListener('touchend', this.handleDocumentClick, true)
   }
 
+  showChildItems(){
+    this.setState(Object.assign({}, this.state, { isOpen : true }));
+  }
+
   render(){
-    if(!this.props.children || !this.state.isOpen){
-      return null;
+    if(!this.props.triggerItem){
+      throw "TriggerItem is required";
     }
+
+    let dropDownItems = !this.props.children || !this.state.isOpen
+    ? null
+    : (
+      <div className="drop-down-container">
+        <div className="drop-down-childs">
+          {this.props.children}
+        </div>
+      </div>
+    );
+
     return (
-        <div className="drop-down-container">
-          <div className="drop-down-childs">
-            {this.props.children}
-          </div>
+        <div>
+          <div onClick={() => { this.showChildItems(); }}>{this.props.triggerItem}</div>
+          {dropDownItems}
         </div>
     );
   }

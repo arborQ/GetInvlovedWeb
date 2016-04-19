@@ -11,15 +11,11 @@ export default class applicationMenu extends React.Component{
   }
   render(){
     return (
-      <div>
-        <div className="account-settings" onClick={() => { this.setState(Object.assign({}, this.state, { isMenuOpen : true })); }}>
-          <DropDownContainer isOpen={this.state.isMenuOpen}>
-            <Paper>
-              <div>tesfdfdsft</div>
-            </Paper>
-          </DropDownContainer>
-        </div>
-      </div>
+        <DropDownContainer triggerItem={<div className="account-settings"></div>}>
+          <Paper>
+            <div>tesfdfdsft</div>
+          </Paper>
+        </DropDownContainer>
     );
   }
 }
