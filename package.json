@@ -6,7 +6,7 @@
     "start": "node ./bin/www",
     "build": "webpack && webpack --config webpack.server.config.js",
     "dev": "webpack",
-    "test": "jest"
+    "test": "jest --verbose"
   },
   "dependencies": {
     "body-parser": "~1.13.2",

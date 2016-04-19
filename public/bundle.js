@@ -14268,7 +14268,7 @@
 	});
 	exports.LoadingIndicator = undefined;
 
-	var _loading = __webpack_require__(254);
+	var _loading = __webpack_require__(255);
 
 	var _loading2 = _interopRequireDefault(_loading);
 
@@ -27198,7 +27198,8 @@
 
 
 /***/ },
-/* 254 */
+/* 254 */,
+/* 255 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27222,25 +27223,47 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var loadingStyles = {
-	  width: "100px",
-	  height: "100px",
-	  margin: "0 auto"
-	};
-
 	var loadingIndicator = function (_React$Component) {
 	  _inherits(loadingIndicator, _React$Component);
 
 	  function loadingIndicator() {
 	    _classCallCheck(this, loadingIndicator);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(loadingIndicator).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(loadingIndicator).call(this));
+
+	    _this.state = { hide: true };
+	    return _this;
 	  }
 
 	  _createClass(loadingIndicator, [{
+	    key: "componentWillMount",
+	    value: function componentWillMount() {
+	      var _this2 = this;
+
+	      if (!!this.props.timeout) {
+	        this.loadingTimeOut = setTimeout(function () {
+	          _this2.setState({ hide: false });
+	        }, this.props.timeout);
+	      } else {
+	        this.setState({ hide: false });
+	      }
+	    }
+	  }, {
+	    key: "componentWillUnmount",
+	    value: function componentWillUnmount() {
+	      if (!!this.loadingTimeOut) {
+	        clearTimeout(this.loadingTimeOut);
+	        this.setState({ hide: true });
+	      }
+	    }
+	  }, {
 	    key: "render",
 	    value: function render() {
-	      return React.createElement("div", { className: "loading-indicator", style: loadingStyles });
+	      if (this.state.hide) {
+	        return null;
+	      }
+	      var loadingStyles = Object.assign({}, { size: "100px", margin: "0 auto" }, this.props.style);
+	      return React.createElement("div", { className: "loading-indicator", style: { width: loadingStyles.size, height: loadingStyles.size, margin: loadingStyles.margin } });
 	    }
 	  }]);
 
