@@ -5,8 +5,8 @@
   "scripts": {
     "start": "concurrent \"npm run build\" \"node ./bin/www\"",
     "build": "concurrent \"webpack --color\" \"gulp less\"",
-    "build-dev" : "concurrent \"webpack --color --watch\" \"gulp less-watch\"",
-    "start-dev" : "concurrent \"npm run build-dev\" \"node ./bin/www\"",
+    "build-dev": "concurrent \"webpack --color --watch\" \"gulp less-watch\"",
+    "start-dev": "concurrent \"npm run build-dev\" \"node ./bin/www\"",
     "test": "jest --verbose"
   },
   "dependencies": {
@@ -31,7 +31,8 @@
     "react-dom": "^15.0",
     "react-router": "2.0.1",
     "redux": "^3.4.0",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+    "shortid": "^2.2.6"
   },
   "devDependencies": {
     "html-webpack-plugin": "1.6.1",
