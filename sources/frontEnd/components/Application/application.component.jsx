@@ -4,6 +4,8 @@ import { Link } from 'react-router';
 import TopNavigation from './application.navigation';
 import LanguageSelection from './application.language';
 import AccountSettings from './aplication.menu';
+
+import { Snackbar } from '../shared';
 class applicationComponent extends React.Component{
   render(){
 
@@ -22,7 +24,7 @@ class applicationComponent extends React.Component{
           </div>
         </header>
         <section className="main-content">{this.props.children}</section>
-        <footer>...</footer>
+        <footer><Snackbar /></footer>
       </div>
     );
   }

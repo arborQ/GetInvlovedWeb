@@ -3,13 +3,16 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
-    "build": "webpack && webpack --config webpack.server.config.js",
-    "dev": "webpack",
+    "start": "concurrent \"npm run build\" \"node ./bin/www\"",
+    "build": "concurrent \"webpack --color\" \"gulp less\"",
+    "build-dev" : "concurrent \"webpack --color --watch\" \"gulp less-watch\"",
+    "start-dev" : "concurrent \"npm run build-dev\" \"node ./bin/www\"",
     "test": "jest --verbose"
   },
   "dependencies": {
+    "better-npm-run": "0.0.8",
     "body-parser": "~1.13.2",
+    "concurrently": "^2.0.0",
     "cookie-parser": "~1.3.5",
     "debug": "~2.2.0",
     "es6-promise": "^3.1.2",
