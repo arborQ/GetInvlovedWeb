@@ -1,6 +1,6 @@
 import { createStore, combineReducers } from 'redux';
 import { generate } from 'shortid';
-import { merge } from 'lodash';
+import { merge, assign } from 'lodash';
 
 export var store = createStore(combineReducers({
   account : (state = { isAuthenticated : false, roles : [ 'anonymous' ] }, action) =>{
@@ -10,14 +10,15 @@ export var store = createStore(combineReducers({
     return state;
   },
   setup : (state = { messages : [] }, action ) => {
-    if(action.type === 'message.success'){
-      return merge({}, state, { messages : [...state.messages, { $id : generate(), message : action.data}] });
+
+    switch (action.type) {
+      case 'message.success':
+        return merge({}, state, { messages : [...state.messages, { $id : generate(), message : action.data}] });
+      case 'message.discard':
+        let messages = state.messages.filter((i) => {return action.ids.indexOf(i.$id) === -1;});
+        return assign({}, state, { messages });
+      default:
+        return state;
     }
-    if(action.type === 'message.discard'){
-      console.log(state.messages);
-      console.log(action.ids.indexOf(action.ids[0]) === -1);
-      return merge({}, state, { messages : state.messages.filter((i) => {return action.ids.indexOf(i.$id) === -1;}) });
-    }
-    return state;
   }
 }));

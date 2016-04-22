@@ -7,14 +7,21 @@ export default class messageContainer extends React.Component {
     super();
     this.state = { messages : [] };
   }
+
+  clearTimeout(){
+    if(!!this.timeout){
+      clearTimeout(this.timeout);
+    }
+  }
   componentWillMount(){
     this.componentWillUnmount = store.subscribe(() => {
       let { setup } = store.getState();
-      this.setState(assign({}, this.state, { messages : [...setup.messages] }));
+      this.setState(assign({}, this.state, { messages : setup.messages }));
       if(setup.messages.length > 0){
-        setTimeout(() => {
+        this.clearTimeout();
+        this.timeout = setTimeout(() => {
           store.dispatch({ type : 'message.discard', ids : this.state.messages.map((i) => i.$id)});
-        }, this.props.timeout || 2000);
+        }, this.props.timeout || 2000 + this.state.messages.length * 300);
       }
     });
   }
