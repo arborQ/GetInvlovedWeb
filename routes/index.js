@@ -1,14 +1,15 @@
 var express = require('express');
 var nconf = require('nconf');
+var router = express.Router();
 
 nconf.env()
-     .file({ file: 'config.json', search: true });
-
-var router = express.Router();
+      .file({ file: 'config.json', search: true });
 
 /* GET home page. */
 router.get('*', function(req, res, next) {
-  res.render('index', { title: 'GetInvolved', development : !nconf.get("NODE_ENV") });
+    var title = 'GetInvolved';
+    var development = !nconf.get("NODE_ENV"); 
+    res.render('index', { title : title, development : development });
 });
 
 module.exports = router;
