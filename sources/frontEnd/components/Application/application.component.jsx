@@ -5,7 +5,7 @@ import TopNavigation from './application.navigation';
 import LanguageSelection from './application.language';
 import AccountSettings from './aplication.menu';
 
-import { Snackbar } from '../shared';
+import { Snackbar } from 'ui';
 class applicationComponent extends React.Component{
   render(){
 

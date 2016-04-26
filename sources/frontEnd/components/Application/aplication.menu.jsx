@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router';
-import { Paper, DropDownContainer } from '../shared'
+import { Paper, DropDownContainer } from 'ui';
 import SearchPage from '../Search/application.search';
 import SignIn from '../signIn/signIn.component';
 import { store } from '../involvedStore';

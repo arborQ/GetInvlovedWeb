@@ -1,5 +1,6 @@
 /* global webpack */
 /* global __dirname */
+var path = require('path');
 
 var loaders = [
   {
@@ -23,7 +24,10 @@ module.exports = {
         loaders: loaders
     },
     resolve: {
-      extensions: ['', '.js', '.jsx', '.ts', '.tsx']
+      extensions: ['', '.js', '.jsx', '.ts', '.tsx'],
+      alias : {
+        ui : path.resolve('./sources/frontEnd/components/material-design-ui')
+      }
     },
     entry: {
       'public': "./sources/frontEnd/public"

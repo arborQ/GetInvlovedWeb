@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { assign } from 'lodash';
 import { routeItem } from '../routing/routes';
-
 import { store } from '../involvedStore'
+import { ButtonContainer, InputContainer } from 'ui';
 
 @routeItem('Zaloguj')
 export default class signInComponent extends React.Component{
@@ -27,13 +27,9 @@ export default class signInComponent extends React.Component{
     return (
       <div className="mui-panel">
         <form onSubmit={this.submitForm.bind(this)}>
-        <div className="mui-textfield">
-          <input type="text" id="email" placeholder="Email" value={this.state.login} onChange={(e) => { this.setState(assign({}, this.state, { login : e.target.value })) }} />
-        </div>
-        <div className="mui-textfield">
-          <input type="password" id="password" placeholder="Password" value={this.state.password} onChange={(e) => { this.setState(assign({}, this.state, { password : e.target.value })) }} />
-        </div>
-        <button type="submit" className="mui-btn mui-btn--primary">Sign In</button>
+          <InputContainer type="text" id="email" placeholder="Email" value={this.state.login} onChange={(e) => { this.setState(assign({}, this.state, { login : e.target.value })) }} />
+          <InputContainer type="password" id="password" placeholder="Password" value={this.state.password} onChange={(e) => { this.setState(assign({}, this.state, { password : e.target.value })) }} />
+          <ButtonContainer disabled={!this.formIsValid()} type="submit">Sign In</ButtonContainer>
         </form>
       </div>
     );
