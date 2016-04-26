@@ -22,6 +22,7 @@
   },
   "devDependencies": {
     "font-awesome": "^4.6.1",
-    "roboto-fontface": "^0.4.5"
+    "roboto-fontface": "^0.4.5",
+    "mui": "^0.5.4"
   }
 }

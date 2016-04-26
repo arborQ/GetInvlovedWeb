@@ -7,12 +7,20 @@ html{
 body {
   font-size: @fontSize;
   font-family: 'Roboto Mono';
+  margin: 0;
   >#app{
       display: flex;
       flex-direction: column;
       align-content: stretch;
       height: 100%;
-      .form-control, .input-group-btn, .btn{
+      .mui-textfield {
+         > input, > textarea{
+           font-size: @fontSize;
+         }
+      }
+      .mui-btn{
+        line-height: 30px;
+        height: 30px;
         font-size: @fontSize;
       }
       header{
