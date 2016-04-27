@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import { Paper, DropDownContainer } from 'ui';
 import SearchPage from '../Search/application.search';
 import SignIn from '../signIn/signIn.component';
-import { store } from '../involvedStore';
+import { Store } from 'flux-logic';
 import { assign } from 'lodash';
 
 export default class applicationMenu extends React.Component{
@@ -13,10 +13,10 @@ export default class applicationMenu extends React.Component{
   }
 
   componentWillMount(){
-    this.componentWillUnmount = store.subscribe(() => {
-      this.setState(assign({}, this.state, { userData : store.getState().account }));
+    this.componentWillUnmount = Store.subscribe(() => {
+      this.setState(assign({}, this.state, { userData : Store.getState().account }));
     });
-    this.setState(assign({}, this.state, { userData : store.getState().account }));
+    this.setState(assign({}, this.state, { userData : Store.getState().account }));
   }
 
   render(){

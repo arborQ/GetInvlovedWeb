@@ -2,7 +2,7 @@ import { createStore, combineReducers } from 'redux';
 import { generate } from 'shortid';
 import { merge, assign } from 'lodash';
 
-export var store = createStore(combineReducers({
+export default createStore(combineReducers({
   account : (state = { isAuthenticated : false, roles : [ 'anonymous' ] }, action) =>{
     if(action.type === 'signIn.success'){
         return merge({}, state, { isAuthenticated : true, login : 'arbor', email : 'arbor@o2.pl', roles : [ 'admin' ] });

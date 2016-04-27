@@ -238,4 +238,5 @@ coverage
 node_modules
 public/bower_components
 public/**/*.js
+public/**/*.js.map
 public/**/*.css

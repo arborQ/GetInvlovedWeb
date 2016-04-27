@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { assign } from 'lodash';
 import { routeItem } from '../routing/routes';
-import { store } from '../involvedStore'
+import { Store } from 'flux-logic'
 import { ButtonContainer, InputContainer } from 'ui';
 
 @routeItem('Zaloguj')
@@ -18,8 +18,8 @@ export default class signInComponent extends React.Component{
   submitForm(e){
     e.preventDefault();
     e.stopPropagation();
-    store.dispatch({ type : 'signIn.success', data : this.state });
-    store.dispatch({ type : 'message.success', data : "Sign in successfull"});
+    Store.dispatch({ type : 'signIn.success', data : this.state });
+    Store.dispatch({ type : 'message.success', data : "Sign in successfull"});
   }
 
   render(){

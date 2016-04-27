@@ -26,7 +26,8 @@ module.exports = {
     resolve: {
       extensions: ['', '.js', '.jsx', '.ts', '.tsx'],
       alias : {
-        ui : path.resolve('./sources/frontEnd/components/material-design-ui')
+        ui : path.resolve('./sources/frontEnd/components/ui-design/material-design-ui'),
+        "flux-logic" : path.resolve('./sources/frontEnd/flux-logic')
       }
     },
     entry: {
@@ -36,5 +37,6 @@ module.exports = {
         path: __dirname,
         filename: "./[name]/bundle.js"
     },
-    noParse : [ 'react', 'react-dom', 'material-ui']
+    noParse : [ 'react', 'react-dom', 'material-ui'],
+    devtool: 'source-map'
 };

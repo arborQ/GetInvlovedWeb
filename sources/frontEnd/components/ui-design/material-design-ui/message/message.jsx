@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { assign } from 'lodash';
 
-import { store } from '../../involvedStore';
+import { Store } from 'flux-logic';
 export default class messageContainer extends React.Component {
   constructor(){
     super();
@@ -14,13 +14,13 @@ export default class messageContainer extends React.Component {
     }
   }
   componentWillMount(){
-    this.componentWillUnmount = store.subscribe(() => {
-      let { setup } = store.getState();
+    this.componentWillUnmount = Store.subscribe(() => {
+      let { setup } = Store.getState();
       this.setState(assign({}, this.state, { messages : setup.messages }));
       if(setup.messages.length > 0){
         this.clearTimeout();
         this.timeout = setTimeout(() => {
-          store.dispatch({ type : 'message.discard', ids : this.state.messages.map((i) => i.$id)});
+          Store.dispatch({ type : 'message.discard', ids : this.state.messages.map((i) => i.$id)});
         }, this.props.timeout || 2000 + this.state.messages.length * 300);
       }
     });
