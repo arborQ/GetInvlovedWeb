@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { assign } from 'lodash';
-import { routeItem } from '../routing/routes';
 import { Store } from 'flux-logic'
+import { RouteItem } from 'routing';
 import { ButtonContainer, InputContainer } from 'ui';
+import { NavigateTo } from 'routing';
 
-@routeItem('Zaloguj')
+@RouteItem('Zaloguj')
 export default class signInComponent extends React.Component{
   constructor(){
     super();
@@ -20,6 +21,7 @@ export default class signInComponent extends React.Component{
     e.stopPropagation();
     Store.dispatch({ type : 'signIn.success', data : this.state });
     Store.dispatch({ type : 'message.success', data : "Sign in successfull"});
+    NavigateTo('/Szukaj');
   }
 
   render(){

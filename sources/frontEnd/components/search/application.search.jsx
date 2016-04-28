@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Link } from 'react-router';
-import { routeItem } from '../routing/routes';
+import { RouteItem } from 'routing';
 import { Paper, InputContainer, ButtonContainer } from 'ui';
 
-@routeItem('Szukaj')
+@RouteItem('Szukaj')
 class applicationSearch extends React.Component{
   render(){
     return (
