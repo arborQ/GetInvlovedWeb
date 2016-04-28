@@ -8,22 +8,28 @@ export default class dropDownContainer extends React.Component {
     this.state = { isOpen : false };
 
     this.handleDocumentClick = () => {
-        this.setState({ isOpen : false });
+      if (!ReactDOM.findDOMNode(this).contains(event.target)){
+        this.hideChildItems();
+      }else{
+        setTimeout(this.hideChildItems.bind(this), 5 );
+      }
     };
   }
 
-  componentDidMount () {
-    document.addEventListener('click', this.handleDocumentClick, true)
-    document.addEventListener('touchend', this.handleDocumentClick, true)
-  }
-
   componentWillUnmount () {
-    document.removeEventListener('click', this.handleDocumentClick, true)
-    document.removeEventListener('touchend', this.handleDocumentClick, true)
+    document.addEventListener('click', this.handleDocumentClick, true);
+    document.addEventListener('touchend', this.handleDocumentClick, true);
   }
-
+  
+  hideChildItems(){
+    this.setState(Object.assign({}, this.state, { isOpen : false }));
+    document.removeEventListener('click', this.handleDocumentClick, true);
+    document.removeEventListener('touchend', this.handleDocumentClick, true);
+  }
   showChildItems(){
     this.setState(Object.assign({}, this.state, { isOpen : true }));
+    document.addEventListener('click', this.handleDocumentClick, true);
+    document.addEventListener('touchend', this.handleDocumentClick, true);
   }
 
   render(){
