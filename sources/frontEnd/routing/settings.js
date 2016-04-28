@@ -1,6 +1,6 @@
 import {
-  browserHistory
-  // hashHistory
+    browserHistory,
+    hashHistory
 } from 'react-router';
 
-export var historyOption = browserHistory;
+export var HistoryOption = browserHistory;
