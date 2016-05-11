@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import { RouteItem } from 'routing';
 import { Paper, InputContainer, ButtonContainer } from 'ui';
 
-@RouteItem('Wynik/:by')
+@RouteItem('Szukaj/Wynik/(:by)')
 class applicationSearchResults extends React.Component{
   render(){
     return (

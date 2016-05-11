@@ -21,7 +21,7 @@ export default class applicationMenu extends React.Component{
 
   render(){
     var menuOptions = this.state.userData.isAuthenticated
-    ? [<Link key="signOut" to={SignIn.PageCode}>Wyloguj</Link>]
+    ? [<a key="signOut" style={{ cursor : 'pointer' }} onClick={ () => { Store.dispatch({ type : 'signOut'}); Store.dispatch({ type : 'message.success', data : "Sign out successfull"}); } }>Wyloguj</a>]
     : [<Link  key="signIn" to={SignIn.PageCode}>Zaloguj</Link>];
 
     return (

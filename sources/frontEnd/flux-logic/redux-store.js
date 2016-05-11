@@ -1,17 +1,27 @@
 import { createStore, combineReducers } from 'redux';
 import { generate } from 'shortid';
 import { merge, assign } from 'lodash';
+import { set, get, remove } from 'local-storage';
+
+var defaultAccount = { isAuthenticated : false, roles : [ 'anonymous' ] };
 
 export default createStore(combineReducers({
-  account : (state = { isAuthenticated : false, roles : [ 'anonymous' ] }, action) =>{
+  account : (state = get('account-data') || defaultAccount, action) =>{
     if(action.type === 'signIn.success'){
-        return merge({}, state, { isAuthenticated : true, login : 'arbor', email : 'arbor@o2.pl', roles : [ 'admin' ] });
+        let accountData = { isAuthenticated : true, login : 'arbor', email : 'arbor@o2.pl', roles : [ 'admin' ] };
+        set('account-data', accountData)
+        return merge({}, state, accountData);
+    }else if(action.type === 'signOut'){
+      remove('account-data');
+      return merge({}, state, defaultAccount);
     }
     return state;
   },
   setup : (state = { messages : [] }, action ) => {
 
     switch (action.type) {
+      case 'message.error':
+        return merge({}, state, { messages : [...state.messages, { $id : generate(), message : action.data}] });
       case 'message.success':
         return merge({}, state, { messages : [...state.messages, { $id : generate(), message : action.data}] });
       case 'message.discard':

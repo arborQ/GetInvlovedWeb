@@ -6,7 +6,9 @@ import buttonContainer from './button/button'
 import inputContainer from './input/input';
 import gridColumnContainer from './grid/grid-column';
 import gridRowContainer from './grid/grid-row';
+import formContainer from './form';
 
+export var FormContainer = formContainer;
 export var InputContainer = inputContainer;
 export var ButtonContainer = buttonContainer;
 export var Snackbar = snackbarContainer;
