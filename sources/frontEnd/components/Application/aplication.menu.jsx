@@ -5,6 +5,7 @@ import SearchPage from '../Search/application.search';
 import SignIn from '../signIn/signIn.component';
 import { Store } from 'flux-logic';
 import { assign } from 'lodash';
+import md5 from 'md5';
 
 export default class applicationMenu extends React.Component{
   constructor(){
@@ -20,12 +21,16 @@ export default class applicationMenu extends React.Component{
   }
 
   render(){
+    var imageStyle = this.state.userData.isAuthenticated ? {
+      backgroundImage : `url(http://www.gravatar.com/avatar/${md5(this.state.userData.email)})`
+    } : {};
+
     var menuOptions = this.state.userData.isAuthenticated
     ? [<a key="signOut" style={{ cursor : 'pointer' }} onClick={ () => { Store.dispatch({ type : 'signOut'}); Store.dispatch({ type : 'message.success', data : "Sign out successfull"}); } }>Wyloguj</a>]
     : [<Link  key="signIn" to={SignIn.PageCode}>Zaloguj</Link>];
 
     return (
-        <DropDownContainer triggerItem={<div className="account-settings"></div>}>
+        <DropDownContainer triggerItem={<div className="account-settings" style={imageStyle}></div>}>
           <Paper>
             <div className="vertical-menu" style={{width : '200px'}}>
               {menuOptions}

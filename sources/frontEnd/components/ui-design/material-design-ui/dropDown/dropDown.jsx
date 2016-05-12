@@ -1,5 +1,5 @@
 import * as React from 'react';
-import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom';
 
 export default class dropDownContainer extends React.Component {
 
@@ -7,7 +7,7 @@ export default class dropDownContainer extends React.Component {
     super();
     this.state = { isOpen : false };
 
-    this.handleDocumentClick = () => {
+    this.handleDocumentClick = (event) => {
       if (!ReactDOM.findDOMNode(this).contains(event.target)){
         this.hideChildItems();
       }else{
@@ -20,7 +20,7 @@ export default class dropDownContainer extends React.Component {
     document.addEventListener('click', this.handleDocumentClick, true);
     document.addEventListener('touchend', this.handleDocumentClick, true);
   }
-  
+
   hideChildItems(){
     this.setState(Object.assign({}, this.state, { isOpen : false }));
     document.removeEventListener('click', this.handleDocumentClick, true);
