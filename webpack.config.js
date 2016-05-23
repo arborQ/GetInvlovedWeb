@@ -33,11 +33,12 @@ module.exports = {
       }
     },
     entry: {
-      'public': "./sources/frontEnd/public"
+      'public': "./sources/frontEnd/public",
+      'service-worker' : "./sources/frontEnd/service-worker"
     },
     output: {
         path: __dirname,
-        filename: "./[name]/bundle.js"
+        filename: "./public/[name].bundle.js"
     },
     noParse : [ 'react', 'react-dom', 'material-ui'],
     devtool: 'source-map'

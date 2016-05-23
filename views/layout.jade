@@ -4,10 +4,8 @@ html
     title= title
     if development
       link(rel='stylesheet', href='/bower_components/mui/packages/cdn/css/mui.css')
-      link(rel='stylesheet', href='/bower_components/font-awesome/css/font-awesome.css')
     else
       link(rel="stylesheet", href="//cdn.muicss.com/mui-latest/css/mui.min.css", type="text/css")
-      link(rel='stylesheet', href='//maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css')
     link(href='//fonts.googleapis.com/css?family=Roboto+Mono:300', rel='stylesheet', type='text/css')
     link(rel='stylesheet', href='/stylesheets/bundle.css')
     link(rel="shortcut icon" href="/favicon.ico")
@@ -17,4 +15,5 @@ html
       script(src="/bower_components/mui/packages/cdn/js/mui.js")
     else
       script(src="//cdn.muicss.com/mui-latest/js/mui.min.js")
-    script(type="text/javascript", src="/bundle.js")
+    script(type="text/javascript", src="/public.bundle.js")
+    script(type="text/javascript") navigator.serviceWorker.register('/service-worker.bundle.js')
