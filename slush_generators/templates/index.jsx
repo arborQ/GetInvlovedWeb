@@ -2,16 +2,16 @@ import * as React from 'react';
 import { RouteItem } from 'routing';
 
 //<%= componentDescription %>
-@RouteItem('<%= name %>')
-class <%= name %>Component extends React.Component{
+@RouteItem('<%= componentName %>')
+class <%= componentName %>Component extends React.Component{
   constructor(){
     super();
     this.state = {  };
   }
 
   render(){
-    return ( <div> {{ '<%= name %>' }} </div>);
+    return ( <div><%= componentName %></div>);
   }
 };
 
-export default <%= name %>Component;
+export default <%= componentName %>Component;

@@ -22,58 +22,13 @@ function format(string) {
     return username.replace(/\s/g, '');
 }
 
-var defaults = (function () {
-    var workingDirName = path.basename(process.cwd()),
-      homeDir, osUserName, configFile, user;
-
-    if (process.platform === 'win32') {
-        homeDir = process.env.USERPROFILE;
-        osUserName = process.env.USERNAME || path.basename(homeDir).toLowerCase();
-    }
-    else {
-        homeDir = process.env.HOME || process.env.HOMEPATH;
-        osUserName = homeDir && homeDir.split('/').pop() || 'root';
-    }
-
-    configFile = path.join(homeDir, '.gitconfig');
-    user = {};
-
-    if (require('fs').existsSync(configFile)) {
-        user = require('iniparser').parseSync(configFile).user;
-    }
-
-    return {
-        appName: workingDirName,
-        userName: osUserName || format(user.name || ''),
-        authorName: user.name || '',
-        authorEmail: user.email || ''
-    };
-})();
-
 gulp.task('default', function (done) {
     var prompts = [{
         name: 'componentName',
-        message: 'What is the name of your component?',
-        default: defaults.appName
+        message: 'What is the name of your component?'
     }, {
-        name: 'appDescription',
+        name: 'componentDescription',
         message: 'What is the description?'
-    }, {
-        name: 'appVersion',
-        message: 'What is the version of your project?',
-        default: '0.1.0'
-    }, {
-        name: 'authorName',
-        message: 'What is the author name?',
-        default: defaults.authorName
-    }, {
-        name: 'authorEmail',
-        message: 'What is the author email?',
-        default: defaults.authorEmail
-    }, {
-        name: 'userName',
-        message: 'What is the github username?',
-        default: defaults.userName
     }, {
         type: 'confirm',
         name: 'moveon',
@@ -94,7 +49,7 @@ gulp.task('default', function (done) {
                     }
                 }))
                 .pipe(conflict('./'))
-                .pipe(gulp.dest('./'))
+                .pipe(gulp.dest('./sources/frontEnd/components/' + answers.componentName))
                 .pipe(install())
                 .on('end', function () {
                     done();

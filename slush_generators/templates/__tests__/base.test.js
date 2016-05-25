@@ -1,8 +1,8 @@
- jest.unmock('../index');
- import component from '../index';
+ jest.unmock('../index.jsx');
+ import component from '../index.jsx';
 
 
-describe('Component <%= name %>', () => {
+describe('Component <%= componentName %>', () => {
   it('is defined', () => {
     expect(component).toBeDefined();
   });
