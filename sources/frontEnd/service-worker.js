@@ -1,8 +1,6 @@
-import { router, precache } from 'sw-toolbox';
+import { router, precache, cacheFirst } from 'sw-toolbox';
+import pathToRegexp from 'path-to-regexp';
 
-router.get(':foo/index.html', function(request, values) {
-  return new Response('Handled a request for ' + request.url +
-      ', where foo is "' + values.foo + '"');
-});
+precache(['/stylesheets/bundle.css'])
 
-precache(['/stylesheets/bundle.css']);
+router.get('/stylesheets/.*', cacheFirst);
