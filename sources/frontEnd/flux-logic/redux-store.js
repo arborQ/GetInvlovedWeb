@@ -8,7 +8,7 @@ var defaultAccount = { isAuthenticated : false, roles : [ 'anonymous' ] };
 export default createStore(combineReducers({
   account : (state = get('account-data') || defaultAccount, action) =>{
     if(action.type === 'signIn.success'){
-        let accountData = { isAuthenticated : true, login : 'arbor', email : 'arbor@o2.pl', roles : [ 'admin' ] };
+        let accountData = action.data;
         set('account-data', accountData)
         return merge({}, state, accountData);
     }else if(action.type === 'signOut'){

@@ -4,6 +4,7 @@ import { Store } from 'flux-logic'
 import { RouteItem } from 'routing';
 import { ButtonContainer, InputContainer, FormContainer } from 'ui';
 import { NavigateTo } from 'routing';
+import { post } from 'api-call';
 
 @RouteItem('Zaloguj')
 export default class signInComponent extends React.Component{
@@ -17,13 +18,16 @@ export default class signInComponent extends React.Component{
   }
 
   submitForm(){
-    if(this.state.login === 'arbor' && this.state.password === 'arbor'){
-      Store.dispatch({ type : 'signIn.success', data : this.state });
-      Store.dispatch({ type : 'message.success', data : "Sign in successfull"});
-      NavigateTo('/Szukaj');
-    }else{
-      Store.dispatch({ type : 'message.error', data : "Unknown login or password"});
-    }
+    var { login, password } = this.state;
+
+    post('/api/authorize', { login, password }).then((res) => {
+      if(res.isAuthenticated){
+        Store.dispatch({ type : 'signIn.success', data : res });
+        Store.dispatch({ type : 'message.success', data : "Sign in successfull"});
+      }else{
+        Store.dispatch({ type : 'message.error', data : res.message});
+      }
+    });
   }
 
   render(){
