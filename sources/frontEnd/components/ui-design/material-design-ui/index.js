@@ -7,6 +7,7 @@ import inputContainer from './input/input';
 import gridColumnContainer from './grid/grid-column';
 import gridRowContainer from './grid/grid-row';
 import formContainer from './form';
+import overlayContainer from './overlay/overlay';
 
 export var FormContainer = formContainer;
 export var InputContainer = inputContainer;
@@ -16,3 +17,4 @@ export var DropDownContainer = dropDownContainer;
 export var Paper = paperContainer;
 export var LoadingIndicator = loadingIndicator;
 export var Grid = { Column : gridColumnContainer, Row : gridRowContainer  };
+export var Overlay = overlayContainer;

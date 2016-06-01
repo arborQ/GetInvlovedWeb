@@ -5,8 +5,10 @@ import { set, get, remove } from 'local-storage';
 
 import accountReducer from './account-reducer';
 import messageReducer from './message-reducer';
+import dialogReducer from './dialog-reducer';
 
 export default createStore(combineReducers({
   account : accountReducer,
-  commounications : messageReducer
+  commounications : messageReducer,
+  dialog : dialogReducer
 }));
