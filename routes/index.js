@@ -1,6 +1,9 @@
-var express = require('express');
-var nconf = require('nconf');
+import express from'express';
+import { enviroment } from '../config';
+
 var router = express.Router();
+
+var nconf = require('nconf');
 
 nconf.env()
       .file({ file: 'config.json', search: true });

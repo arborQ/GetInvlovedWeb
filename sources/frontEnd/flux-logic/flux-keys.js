@@ -1,6 +1,7 @@
 import keyMirror from 'keyMirror';
 export default keyMirror({
-  signInSuccess : null,
+  signIn : null,
   signOut : null,
-  messageError : null
+  messagePush : null,
+  messageDiscard : null
 });

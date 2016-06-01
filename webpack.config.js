@@ -27,7 +27,7 @@ module.exports = {
       extensions: ['', '.js', '.jsx', '.ts', '.tsx'],
       alias : {
         ui : path.resolve('./sources/frontEnd/components/ui-design/material-design-ui'),
-        "flux-logic" : path.resolve('./sources/frontEnd/flux-logic'),
+        "flux-actions" : path.resolve('./sources/frontEnd/flux-logic'),
         routing : path.resolve('./sources/frontEnd/routing'),
         pages : path.resolve('./sources/frontEnd/pages'),
         "api-call" : path.resolve('./sources/frontEnd/ajax')

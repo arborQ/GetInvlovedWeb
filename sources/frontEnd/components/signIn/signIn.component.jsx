@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { assign } from 'lodash';
-import { Store } from 'flux-logic'
+import { SignInAction, DisplayMessageAction } from 'flux-actions'
 import { RouteItem } from 'routing';
 import { ButtonContainer, InputContainer, FormContainer } from 'ui';
 import { NavigateTo } from 'routing';
@@ -20,12 +20,14 @@ export default class signInComponent extends React.Component{
   submitForm(){
     var { login, password } = this.state;
 
-    post('/api/authorize', { login, password }).then((res) => {
+    post('/api/authorize', { login, password })
+    .then((res) => {
       if(res.isAuthenticated){
-        Store.dispatch({ type : 'signIn.success', data : res });
-        Store.dispatch({ type : 'message.success', data : "Sign in successfull"});
+        SignInAction(res.token);
+        DisplayMessageAction("Sign in successfull");
+        console.log('DisplayMessageAction');
       }else{
-        Store.dispatch({ type : 'message.error', data : res.message});
+        DisplayMessageAction(res.message);
       }
     });
   }

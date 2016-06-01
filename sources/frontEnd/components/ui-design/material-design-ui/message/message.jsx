@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { assign } from 'lodash';
 
-import { Store } from 'flux-logic';
+import { Subscribe, GetState, DiscardMessageActions } from 'flux-actions';
 export default class messageContainer extends React.Component {
   constructor(){
     super();
@@ -14,13 +14,13 @@ export default class messageContainer extends React.Component {
     }
   }
   componentWillMount(){
-    this.componentWillUnmount = Store.subscribe(() => {
-      let { setup } = Store.getState();
-      this.setState(assign({}, this.state, { messages : setup.messages }));
-      if(setup.messages.length > 0){
+    this.componentWillUnmount = Subscribe(() => {
+      let { commounications } = GetState();
+      this.setState(assign({}, this.state, { messages : commounications.messages }));
+      if(commounications.messages.length > 0){
         this.clearTimeout();
         this.timeout = setTimeout(() => {
-          Store.dispatch({ type : 'message.discard', ids : this.state.messages.map((i) => i.$id)});
+          DiscardMessageActions(this.state.messages.map((i) => i.$id));
         }, this.props.timeout || 2000 + this.state.messages.length * 300);
       }
     });
