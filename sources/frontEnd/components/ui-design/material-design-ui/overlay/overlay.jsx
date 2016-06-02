@@ -16,6 +16,7 @@ export default class overlayContainer extends React.Component {
       }
     });
   }
+
   render(){
     var [ topDialog ] = this.state.dialogItems;
     if(!topDialog){

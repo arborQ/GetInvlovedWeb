@@ -36,10 +36,9 @@ export default class signInComponent extends React.Component{
     return (
       <Paper>
         <FormContainer onSubmit={this.submitForm.bind(this)}>
-          <InputContainer type="text" id="email" placeholder="Email" value={this.state.login} onChange={(e) => { this.setState(assign({}, this.state, { login : e.target.value })) }} />
-          <InputContainer type="password" id="password" placeholder="Password" value={this.state.password} onChange={(e) => { this.setState(assign({}, this.state, { password : e.target.value })) }} />
-          <ButtonContainer disabled={!this.formIsValid()} type="submit">Sign In</ButtonContainer>
-          <Overlay><Paper>item</Paper></Overlay>
+          <InputContainer type="text" id="email" placeholder="account.email" value={this.state.login} onChange={(e) => { this.setState(assign({}, this.state, { login : e.target.value })) }} />
+          <InputContainer type="password" id="password" placeholder="account.password" value={this.state.password} onChange={(e) => { this.setState(assign({}, this.state, { password : e.target.value })) }} />
+          <ButtonContainer disabled={!this.formIsValid()} type="submit">{"account.signin"}</ButtonContainer>
         </FormContainer>
       </Paper>
     );
