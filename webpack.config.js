@@ -15,6 +15,19 @@ var loaders = [
         "react"
       ]
     }
+  },
+  {
+    "test": /\.ts?$|\\.tsx?$/,
+    "loader": "ts",
+    "query": {
+      "transpileOnly": true,
+      "isolatedModules": true,
+      "silent": true,
+      "compilerOptions": {
+        "jsx": "react",
+        "target": "es5"
+      }
+    }
   }
 ];
 

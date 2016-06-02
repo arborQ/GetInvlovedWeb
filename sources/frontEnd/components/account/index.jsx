@@ -1,10 +1,8 @@
 import * as React from 'react';
-import { RouteItem } from 'routing';
 import { ButtonContainer, FormContainer, Paper } from 'ui';
 
-//<%= componentDescription %>
-@RouteItem('<%= componentName %>')
-class <%= componentName %>Component extends React.Component{
+//Account settings page
+class accountComponent extends React.Component{
   constructor(){
     super();
     this.state = {  };
@@ -38,8 +36,8 @@ class <%= componentName %>Component extends React.Component{
   // }
 
   render(){
-    return ( <Paper><%= componentName %></Paper> );
+    return ( <Paper>account</Paper> );
   }
 };
 
-export default <%= componentName %>Component;
+export default accountComponent;

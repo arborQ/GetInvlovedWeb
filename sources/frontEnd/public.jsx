@@ -9,7 +9,8 @@ import Application from './Components/Application/application.component';
 import {
   SearchPage,
   SearchResultsPage,
-  SignInPage
+  SignInPage,
+  ChangeLanguage
 } from 'pages';
 
 dom.render(
@@ -19,6 +20,7 @@ dom.render(
         <Route path={SearchPage.PageCode} component={SearchPage}>
           <Route path={SearchResultsPage.PageCode} component={SearchResultsPage}></Route>
         </Route>
+        <Route path={ChangeLanguage.PageCode} component={ChangeLanguage}></Route>
         <Route path={SignInPage.PageCode} component={SignInPage}></Route>
         <Route path="*" component={UnknownPage} />
       </Route>
