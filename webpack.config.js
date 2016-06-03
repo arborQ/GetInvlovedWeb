@@ -31,15 +31,18 @@ var loaders = [
   }
 ];
 
-
 module.exports = {
     module: {
         loaders: loaders
     },
     resolve: {
+      root: [
+        path.resolve('./'),
+      ],
       extensions: ['', '.js', '.jsx', '.ts', '.tsx'],
       alias : {
-        ui : path.resolve('./sources/frontEnd/components/ui-design/material-design-ui'),
+        'ui-design' : path.resolve('./sources/frontEnd/components/ui-design/material-design-ui'),
+        ui : path.resolve('./sources/frontEnd/components/user-interface'),
         "flux-actions" : path.resolve('./sources/frontEnd/flux-logic'),
         routing : path.resolve('./sources/frontEnd/routing'),
         pages : path.resolve('./sources/frontEnd/pages'),
@@ -47,8 +50,7 @@ module.exports = {
       }
     },
     entry: {
-      'public': "./sources/frontEnd/public",
-      'service-worker' : "./sources/frontEnd/service-worker"
+      'public': "./sources/frontEnd/public"
     },
     output: {
         path: __dirname,

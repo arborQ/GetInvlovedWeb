@@ -23,7 +23,7 @@ class applicationSearch extends React.Component{
         <Paper>
           <form onSubmit={(e) => { e.preventDefault(); NavigateTo('/Szukaj/Wynik/:by', { by : this.state.search })  }}>
             <InputContainer placeholder="Szukaj" value={this.state.search} onChange={(e) => this.setState(Object.assign(this.state, { search : e.target.value })) } />
-            <ButtonContainer type="submit">Szukaj</ButtonContainer>
+            <ButtonContainer type="submit">search.searchButton</ButtonContainer>
           </form>
         </Paper>
         <div>{this.props.children}</div>
