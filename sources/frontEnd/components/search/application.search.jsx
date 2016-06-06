@@ -3,21 +3,23 @@ import { Link } from 'react-router';
 import { RouteItem } from 'routing';
 import { Paper, InputContainer, ButtonContainer } from 'ui';
 import { NavigateTo } from 'routing';
+import AuthorizedComponent from '../shared/authorized';
 
 @RouteItem('Szukaj')
-class applicationSearch extends React.Component{
+class applicationSearch extends AuthorizedComponent{
   constructor(){
     super();
     this.state = { search : '' };
   }
   componentWillMount(){
+    super.componentWillMount();
     this.setState(Object.assign(this.state, { search : this.props.routeParams.by || '' }))
   }
   componentWillReceiveProps(nextProps) {
     this.setState(Object.assign(this.state, { search : nextProps.routeParams.by || '' }))
   }
 
-  render(){
+  renderAuthorizedContent(){
     return (
       <div>
         <Paper>

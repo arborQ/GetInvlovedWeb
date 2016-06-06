@@ -36,6 +36,7 @@
     "isomorphic-fetch": "^2.2.1",
     "jade": "~1.11.0",
     "jsonwebtoken": "^7.0.0",
+    "jwt-client": "^0.2.1",
     "keymirror": "^0.1.1",
     "local-storage": "^1.4.2",
     "md5": "^2.1.0",

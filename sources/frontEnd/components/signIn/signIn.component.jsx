@@ -2,12 +2,13 @@ import * as React from 'react';
 import { assign } from 'lodash';
 import { SignInAction, DisplayMessageAction } from 'flux-actions'
 import { RouteItem } from 'routing';
-import { ButtonContainer, InputContainer, FormContainer, Paper, Overlay } from 'ui';
+import { ButtonContainer, InputContainer, FormContainer, Paper, TextContainer } from 'ui';
 import { NavigateTo } from 'routing';
 import { post } from 'api-call';
+import AuthorizedComponent from '../shared/authorized';
 
 @RouteItem('Zaloguj')
-export default class signInComponent extends React.Component{
+export default class signInComponent extends AuthorizedComponent{
   constructor(){
     super();
     this.state = { login : '', password : '' };
@@ -24,14 +25,17 @@ export default class signInComponent extends React.Component{
     .then((res) => {
       if(res.isAuthenticated){
         SignInAction(res.token);
-        DisplayMessageAction("Sign in successfull");
+        DisplayMessageAction("messages.signInMessage");
       }else{
         DisplayMessageAction(res.message);
       }
     });
   }
+  renderAuthorizedContent(){
+    return (<Paper><TextContainer>account.userAuthorizedContentMessage</TextContainer></Paper>);
+  }
 
-  render(){
+  renderUnauthorizedContent(){
     var isValid = this.formIsValid();
     return (
       <Paper>

@@ -11,7 +11,6 @@ class TranslationsService {
 var defaultState = new TranslationsService();
 var store = createStore((state = defaultState, action) => {
   if(!action.data){
-    console.log(state);
     return state;
   }
   return Object.assign({}, state, action.data);
