@@ -12,6 +12,10 @@ export var SignInAction = (token) => {
   dispatch({ type : Keys.signIn, data : token });
 };
 
+export var Auth0SignInAction = (token, profile) => {
+  dispatch({ type : Keys.auth0SignIn, data : { token, profile } });
+};
+
 export var SignOutAction = () => {
   dispatch({ type : Keys.signOut });
 };

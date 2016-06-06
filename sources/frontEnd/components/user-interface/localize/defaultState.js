@@ -8,7 +8,8 @@ export default flat({
     unauthorizedContentMessage : 'Brak dostępu do komponentu.',
     userAuthorizedContentMessage : 'Brak dostępu do komponentu. (Zalogowany)',
     signOut : 'Wyloguj',
-    signIn : 'Zaloguj'
+    signIn : 'Zaloguj',
+    Auth0Lock : 'Logowanie Auth0'
   },
   search : {
     searchButton : 'Szukaj elementów'

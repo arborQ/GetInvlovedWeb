@@ -4,12 +4,21 @@ import { Paper, DropDownContainer, TextContainer } from 'ui';
 import SearchPage from '../Search/application.search';
 import AuthorizedComponent from '../shared/authorized';
 import SignIn from '../signIn/signIn.component';
-import { Subscribe, GetState, SignOutAction, DisplayMessageAction } from 'flux-actions';
+import { Subscribe, GetState, SignOutAction, Auth0SignInAction, DisplayMessageAction } from 'flux-actions';
 import { assign } from 'lodash';
 import md5 from 'md5';
 
 export default class applicationMenu extends AuthorizedComponent{
 
+  auto0SignIn(){
+    var lock = new Auth0Lock('SxuuH0NwiIhUauJQJenOUMDyBysR4Wb9', 'justmove.eu.auth0.com');
+    lock.showSignin((err, profile, token) => {
+      console.log(err);
+      console.log(profile);
+      console.log(token);
+      Auth0SignInAction(token, profile);
+    })
+  }
   renderAuthorizedContent() {
     var imageStyle = { backgroundImage : `url(http://www.gravatar.com/avatar/${md5(this.state.account.email)})` };
 
@@ -29,6 +38,7 @@ export default class applicationMenu extends AuthorizedComponent{
       <Paper>
         <div className="vertical-menu" style={{width : '200px'}}>
           <Link  key="signIn" to={SignIn.PageCode}><TextContainer>account.signIn</TextContainer></Link>
+          <a key="Auth0Lock" onClick={this.auto0SignIn.bind(this)}><TextContainer>account.Auth0Lock</TextContainer></a>
         </div>
       </Paper>
     </DropDownContainer>);
