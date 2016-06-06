@@ -5,7 +5,7 @@ import { Paper, InputContainer, ButtonContainer } from 'ui';
 import { NavigateTo } from 'routing';
 import AuthorizedComponent from '../shared/authorized';
 
-@RouteItem('Szukaj')
+@RouteItem('Szukaj/(:by)')
 class applicationSearch extends AuthorizedComponent{
   constructor(){
     super();

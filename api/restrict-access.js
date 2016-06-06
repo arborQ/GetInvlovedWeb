@@ -1,4 +1,4 @@
-var { secret } = require('../../config');
+var { secret } = require('../config');
 var jwt = require('express-jwt');
 
 var getToken = (req) => {

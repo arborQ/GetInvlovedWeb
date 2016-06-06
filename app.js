@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 
 var authorizeApi = require('./api/authorize');
-var restrictAccess = require('./api/authorize/restrict-access');
+var restrictAccess = require('./api/restrict-access');
 var app = express();
 
 // view engine setup
@@ -19,7 +19,7 @@ app.set('view engine', 'jade');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser()); 
+app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api', restrictAccess);

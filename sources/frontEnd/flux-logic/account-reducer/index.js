@@ -10,8 +10,7 @@ import fluxActions from '../flux-keys';
 var jwtToken = get('account-data');
 var jwtClaim = !!jwtToken ? read(jwtToken) : null;
 if(!jwtClaim){
-  jwtToken = get('auto0-account-data');
-  jwtClaim = !!jwtToken ? read(jwtToken) : null;
+  jwtClaim =  { claim : get('auth0-account-claim') };
 }
 
 console.log(jwtClaim);
