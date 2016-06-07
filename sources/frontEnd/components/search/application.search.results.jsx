@@ -2,21 +2,22 @@ import * as React from 'react';
 import { Link } from 'react-router';
 import { RouteItem } from 'routing';
 import { sortBy, filter } from 'lodash';
-import { Paper, InputContainer, ButtonContainer } from 'ui';
+import { Paper, InputContainer, ButtonContainer, LoadingIndicator } from 'ui';
 import { get } from 'api-call';
+import BaseComponent from '../shared/baseComponent';
 
 @RouteItem('Szukaj/Wynik/(:by)')
-class applicationSearchResults extends React.Component{
+class applicationSearchResults extends BaseComponent{
   constructor(){
     super();
-    this.state = { results : [], search : '' };
+    this.state = { results : [], search : '', isLoading : false };
   }
 
   loadServerData(props){
-    Object.assign({}, this.state, { search : props.routeParams.by })
-    get('/api/search', { search : props.routeParams.by })
+    super.updateState({ search : props.routeParams.by, isLoading : true });
+    var pr = get('/api/search', { search : props.routeParams.by })
     .then((results) => {
-      this.setState(Object.assign({}, this.state, { results }));
+      super.updateState({ results, isLoading : false });
     });
   }
 
@@ -37,10 +38,11 @@ class applicationSearchResults extends React.Component{
     if(userItems.length === 0){
       userItems = [ <i key={0}>{`No items for '${this.props.routeParams.by}'`}</i>];
     }
-    return (
-      <Paper>
-        {userItems}
-      </Paper>);
+    if(this.state.isLoading){
+      return (<Paper><LoadingIndicator /></Paper>);
+    }else{
+      return ( <Paper> {userItems} </Paper> );
+    }
   }
 };
 
