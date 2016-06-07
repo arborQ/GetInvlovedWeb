@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "ajax-promise": "^0.8.1",
+    "ajax-request": "^1.2.1",
     "babel": "^6.5.2",
     "babel-cli": "^6.9.0",
     "babel-eslint": "^6.0.4",
@@ -27,6 +28,7 @@
     "express": "~4.13.1",
     "express-jwt": "^3.4.0",
     "flat": "^2.0.0",
+    "fs": "0.0.2",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-clean-css": "^2.0.6",

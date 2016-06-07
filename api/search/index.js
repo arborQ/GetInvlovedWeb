@@ -18,6 +18,9 @@ var filterElements = (items, search) => {
 
 api
   .get((req, res, next) => {
+    setTimeout(() => {
+      res.send(filterElements(users, req.query.search));
+    }, 500);
 
   });
 

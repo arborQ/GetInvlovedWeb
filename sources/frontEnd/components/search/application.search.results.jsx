@@ -3,18 +3,35 @@ import { Link } from 'react-router';
 import { RouteItem } from 'routing';
 import { sortBy, filter } from 'lodash';
 import { Paper, InputContainer, ButtonContainer } from 'ui';
+import { get } from 'api-call';
 
 @RouteItem('Szukaj/Wynik/(:by)')
 class applicationSearchResults extends React.Component{
+  constructor(){
+    super();
+    this.state = { results : [], search : '' };
+  }
+
+  loadServerData(props){
+    Object.assign({}, this.state, { search : props.routeParams.by })
+    get('/api/search', { search : props.routeParams.by })
+    .then((results) => {
+      this.setState(Object.assign({}, this.state, { results }));
+    });
+  }
+
+  componentWillReceiveProps(next){
+    this.loadServerData(next);
+  }
+
+  componentWillMount(){
+    this.loadServerData(this.props);
+  }
+
   render(){
-    var users = [
-      { id : 1, firstName : 'Łukasz', lastName : 'Wojcik'},
-      { id : 2, firstName : 'Aleksandra', lastName : 'Wojcik'},
-      { id : 3, firstName : 'Julia', lastName : 'Wojcik'},
-      { id : 4, firstName : 'Julia', lastName : 'Wojcik'}
-    ];
+    let { results } = this.state;
     var userItems =
-    sortBy(filter(users, { firstName : this.props.routeParams.by }), 'firstName')
+    results
     .map((item) => <div key={item.id} className="list-item">{`${item.firstName} ${item.lastName}`}</div>);
 
     if(userItems.length === 0){

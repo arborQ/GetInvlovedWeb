@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 
 var authorizeApi = require('./api/authorize');
+var searchApi = require('./api/search');
 var restrictAccess = require('./api/restrict-access');
 var app = express();
 
@@ -25,7 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api', restrictAccess);
 app.use('/', routes);
 app.use('/api', authorizeApi);
-
+app.use('/api', searchApi);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
