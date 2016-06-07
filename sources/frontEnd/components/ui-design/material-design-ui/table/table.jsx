@@ -20,12 +20,14 @@ export default class tableContainer extends React.Component {
     let displayRows = rows.map((r) => <Row key={r.id} row={r} columns={columns} />);
 
     return (
+      <div className="md-tab">
         <Paper style={{ paddingTop : 0, paddingBottom : 0 }}>
           <Header columns={columns} />
           <ReactCSSTransitionGroup >
             { displayRows }
           </ReactCSSTransitionGroup>
         </Paper>
+      </div>
     );
   }
 }

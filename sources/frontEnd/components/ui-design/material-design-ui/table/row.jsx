@@ -5,7 +5,7 @@ export default class tableRowContainer extends React.Component {
 
     var columnElements = columns.map((c) => <div key={c.headerName} className={`md-tab-h-c mui-col-md-${c.size}`}>{row[c.headerName]}</div>)
     return (
-        <div className="md-tab-r mui-row" style={{ minHeight : '40px', lineHeight : '40px' }}>{columnElements}</div>
+        <div className="md-tab-r mui-row">{columnElements}</div>
     );
   }
 }
