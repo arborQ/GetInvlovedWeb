@@ -15,7 +15,7 @@ class applicationSearchResults extends BaseComponent{
 
   loadServerData(props){
     super.updateState({ search : props.routeParams.by, isLoading : true });
-    var pr = get('/api/search', { search : props.routeParams.by })
+    this.handlePromise(get('/api/search', { search : props.routeParams.by }))
     .then((results) => {
       super.updateState({ results, isLoading : false });
     });
