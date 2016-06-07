@@ -13,3 +13,4 @@ export var DropDownContainer = ui.DropDownContainer;
 export var Paper = ui.Paper;
 export var LoadingIndicator = ui.LoadingIndicator;
 export var TextContainer = textContainer;
+export var TableContainer = ui.TableContainer;

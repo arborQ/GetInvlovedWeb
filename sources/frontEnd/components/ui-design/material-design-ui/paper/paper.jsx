@@ -6,7 +6,7 @@ export default class paperContainer extends React.Component {
       return null;
     }
     return (
-        <div className="mui-panel">
+        <div className="mui-panel" {...this.props}>
           {this.props.children}
         </div>
     );
