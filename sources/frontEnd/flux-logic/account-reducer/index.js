@@ -9,11 +9,11 @@ import fluxActions from '../flux-keys';
 
 var jwtToken = get('account-data');
 var jwtClaim = !!jwtToken ? read(jwtToken) : null;
-if(!jwtClaim){
-  jwtClaim =  { claim : get('auth0-account-claim') };
-}
+// if(!jwtClaim){
+//   jwtClaim =  { claim : get('auth0-account-claim') };
+// }
 
-console.log(jwtClaim);
+//console.log(jwtClaim);
 
 export default (state = !!jwtClaim ? jwtClaim.claim : defaultAccount, action) => {
   switch (action.type) {

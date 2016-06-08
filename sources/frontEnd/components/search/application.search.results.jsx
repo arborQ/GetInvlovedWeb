@@ -2,11 +2,10 @@ import * as React from 'react';
 import { Link } from 'react-router';
 import { RouteItem } from 'routing';
 import { sortBy, filter } from 'lodash';
-import { Paper, InputContainer, ButtonContainer, LoadingIndicator } from 'ui';
+import { Paper, InputContainer, ButtonContainer, LoadingIndicator, TableContainer } from 'ui';
 import { get } from 'api-call';
 import BaseComponent from '../shared/baseComponent';
 
-@RouteItem('Szukaj/Wynik/(:by)')
 class applicationSearchResults extends BaseComponent{
   constructor(){
     super();
@@ -14,8 +13,8 @@ class applicationSearchResults extends BaseComponent{
   }
 
   loadServerData(props){
-    super.updateState({ search : props.routeParams.by, isLoading : true });
-    this.handlePromise(get('/api/search', { search : props.routeParams.by }))
+    super.updateState({ search : props.search, isLoading : true });
+    this.handlePromise(get('/api/search', { search : props.search }))
     .then((results) => {
       super.updateState({ results, isLoading : false });
     });
@@ -30,19 +29,13 @@ class applicationSearchResults extends BaseComponent{
   }
 
   render(){
-    let { results } = this.state;
-    var userItems =
-    results
-    .map((item) => <div key={item.id} className="list-item">{`${item.firstName} ${item.lastName}`}</div>);
+    return (<TableContainer
+      columns={[
+        { headerName : 'id', size : 1 },
+        { headerName : 'firstName', size : 3 },
+        { headerName : 'lastName', size : 8 } ]}
+      rows={this.state.results} />);
 
-    if(userItems.length === 0){
-      userItems = [ <i key={0}>{`No items for '${this.props.routeParams.by}'`}</i>];
-    }
-    if(this.state.isLoading){
-      return (<Paper><LoadingIndicator /></Paper>);
-    }else{
-      return ( <Paper> {userItems} </Paper> );
-    }
   }
 };
 
