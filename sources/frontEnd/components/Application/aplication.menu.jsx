@@ -12,10 +12,9 @@ export default class applicationMenu extends AuthorizedComponent{
 
   auto0SignIn(){
     var lock = new Auth0Lock('SxuuH0NwiIhUauJQJenOUMDyBysR4Wb9', 'justmove.eu.auth0.com');
+    console.log(lock.app_metadata);
     lock.showSignin((err, profile, token) => {
-      console.log(err);
       console.log(profile);
-      console.log(token);
       Auth0SignInAction(token, profile);
     })
   }
@@ -34,11 +33,11 @@ export default class applicationMenu extends AuthorizedComponent{
   }
 
   renderUnauthorizedContent() {
+    //<a key="Auth0Lock" onClick={this.auto0SignIn.bind(this)}><TextContainer>account.Auth0Lock</TextContainer></a>
     return (<DropDownContainer triggerItem={<div className="account-settings"></div>}>
       <Paper>
         <div className="vertical-menu" style={{width : '200px'}}>
           <Link  key="signIn" to={SignIn.PageCode}><TextContainer>account.signIn</TextContainer></Link>
-          <a key="Auth0Lock" onClick={this.auto0SignIn.bind(this)}><TextContainer>account.Auth0Lock</TextContainer></a>
         </div>
       </Paper>
     </DropDownContainer>);

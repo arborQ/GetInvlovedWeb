@@ -6,7 +6,6 @@ import { Paper, InputContainer, ButtonContainer, LoadingIndicator, TableContaine
 import { get } from 'api-call';
 import BaseComponent from '../shared/baseComponent';
 
-@RouteItem('Szukaj/Wynik/(:by)')
 class applicationSearchResults extends BaseComponent{
   constructor(){
     super();
@@ -14,8 +13,8 @@ class applicationSearchResults extends BaseComponent{
   }
 
   loadServerData(props){
-    super.updateState({ search : props.routeParams.by, isLoading : true });
-    this.handlePromise(get('/api/search', { search : props.routeParams.by }))
+    super.updateState({ search : props.search, isLoading : true });
+    this.handlePromise(get('/api/search', { search : props.search }))
     .then((results) => {
       super.updateState({ results, isLoading : false });
     });
@@ -31,7 +30,7 @@ class applicationSearchResults extends BaseComponent{
 
   render(){
     return (<TableContainer
-      columns={[ 
+      columns={[
         { headerName : 'id', size : 1 },
         { headerName : 'firstName', size : 3 },
         { headerName : 'lastName', size : 8 } ]}

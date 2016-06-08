@@ -4,6 +4,7 @@ import { RouteItem } from 'routing';
 import { Paper, InputContainer, ButtonContainer } from 'ui';
 import { NavigateTo } from 'routing';
 import AuthorizedComponent from '../shared/authorized';
+import SearchResultsPage from './application.search.results';
 
 @RouteItem('Szukaj/(:by)')
 class applicationSearch extends AuthorizedComponent{
@@ -13,22 +14,22 @@ class applicationSearch extends AuthorizedComponent{
   }
   componentWillMount(){
     super.componentWillMount();
-    this.setState(Object.assign(this.state, { search : this.props.routeParams.by || '' }))
+    this.componentWillReceiveProps(this.props);
   }
   componentWillReceiveProps(nextProps) {
-    this.setState(Object.assign(this.state, { search : nextProps.routeParams.by || '' }))
+    this.setState(Object.assign(this.state, { search : nextProps.routeParams.by || '', searchQuery  : nextProps.routeParams.by || '' }))
   }
 
   renderAuthorizedContent(){
     return (
       <div>
         <Paper>
-          <form onSubmit={(e) => { e.preventDefault(); NavigateTo('/Szukaj/Wynik/:by', { by : this.state.search })  }}>
+          <form onSubmit={(e) => { e.preventDefault(); NavigateTo('/Szukaj/:by', { by : this.state.search })  }}>
             <InputContainer placeholder="Szukaj" value={this.state.search} onChange={(e) => this.setState(Object.assign(this.state, { search : e.target.value })) } />
             <ButtonContainer type="submit">search.searchButton</ButtonContainer>
           </form>
         </Paper>
-        <div>{this.props.children}</div>
+        <SearchResultsPage search={this.state.searchQuery} />
       </div>);
   }
 };

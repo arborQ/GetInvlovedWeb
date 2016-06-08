@@ -16,9 +16,7 @@ dom.render(
   <Router history={RoutingSettings.HistoryOption}>
     <Route path="/" component={Application} >
       <IndexRoute component={SearchPage} />
-      <Route path={SearchPage.PageCode} component={SearchPage}>
-        <Route path={SearchResultsPage.PageCode} component={SearchResultsPage}></Route>
-      </Route>
+      <Route path={SearchPage.PageCode} component={SearchPage}></Route>
       <Route path={SignInPage.PageCode} component={SignInPage}></Route>
       <Route path="*" component={UnknownPage} />
     </Route>
